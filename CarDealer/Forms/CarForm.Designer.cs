@@ -39,17 +39,17 @@ namespace CarDealer.Forms
             this.textBoxChassis = new System.Windows.Forms.TextBox();
             this.labelColor = new System.Windows.Forms.Label();
             this.textBoxColor = new System.Windows.Forms.TextBox();
-            this.labelPrize = new System.Windows.Forms.Label();
-            this.textBoxPrize = new System.Windows.Forms.TextBox();
+            this.labelPrice = new System.Windows.Forms.Label();
+            this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBoxEquipment = new System.Windows.Forms.ComboBox();
-            this.labelSelectEquipment = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.labelName = new System.Windows.Forms.Label();
-            this.textBoxNameOfEquipment = new System.Windows.Forms.TextBox();
-            this.labelInfo = new System.Windows.Forms.Label();
-            this.richTextBoxInfoOfEquipment = new System.Windows.Forms.RichTextBox();
             this.buttonAddEquipment = new System.Windows.Forms.Button();
+            this.richTextBoxInfoOfEquipment = new System.Windows.Forms.RichTextBox();
+            this.labelInfo = new System.Windows.Forms.Label();
+            this.textBoxNameOfEquipment = new System.Windows.Forms.TextBox();
+            this.labelName = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelSelectEquipment = new System.Windows.Forms.Label();
+            this.comboBoxEquipment = new System.Windows.Forms.ComboBox();
             this.EquipmentListView = new System.Windows.Forms.ListView();
             this.buttonDeleteEquipment = new System.Windows.Forms.Button();
             this.buttonAddCar = new System.Windows.Forms.Button();
@@ -123,6 +123,13 @@ namespace CarDealer.Forms
             this.labelChassis.TabIndex = 7;
             this.labelChassis.Text = "Chassis:";
             // 
+            // textBoxChassis
+            // 
+            this.textBoxChassis.Location = new System.Drawing.Point(103, 159);
+            this.textBoxChassis.Name = "textBoxChassis";
+            this.textBoxChassis.Size = new System.Drawing.Size(201, 20);
+            this.textBoxChassis.TabIndex = 8;
+            // 
             // labelColor
             // 
             this.labelColor.AutoSize = true;
@@ -141,31 +148,23 @@ namespace CarDealer.Forms
             this.textBoxColor.Size = new System.Drawing.Size(201, 20);
             this.textBoxColor.TabIndex = 10;
             // 
-            // labelPrize
+            // labelPrice
             // 
-            this.labelPrize.AutoSize = true;
-            this.labelPrize.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPrize.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.labelPrize.Location = new System.Drawing.Point(35, 215);
-            this.labelPrize.Name = "labelPrize";
-            this.labelPrize.Size = new System.Drawing.Size(42, 19);
-            this.labelPrize.TabIndex = 11;
-            this.labelPrize.Text = "Prize:";
+            this.labelPrice.AutoSize = true;
+            this.labelPrice.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPrice.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.labelPrice.Location = new System.Drawing.Point(35, 215);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(43, 19);
+            this.labelPrice.TabIndex = 11;
+            this.labelPrice.Text = "Price:";
             // 
-            // textBoxPrize
+            // textBoxPrice
             // 
-            this.textBoxPrize.Location = new System.Drawing.Point(103, 213);
-            this.textBoxPrize.Name = "textBoxPrize";
-            this.textBoxPrize.Size = new System.Drawing.Size(201, 20);
-            this.textBoxPrize.TabIndex = 12;
-            
-            // 
-            // textBoxChassis
-            // 
-            this.textBoxChassis.Location = new System.Drawing.Point(103, 159);
-            this.textBoxChassis.Name = "textBoxChassis";
-            this.textBoxChassis.Size = new System.Drawing.Size(201, 20);
-            this.textBoxChassis.TabIndex = 8;
+            this.textBoxPrice.Location = new System.Drawing.Point(103, 213);
+            this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.Size = new System.Drawing.Size(201, 20);
+            this.textBoxPrice.TabIndex = 12;
             // 
             // groupBox1
             // 
@@ -187,47 +186,22 @@ namespace CarDealer.Forms
             this.groupBox1.Text = "Equipment";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // comboBoxEquipment
+            // buttonAddEquipment
             // 
-            this.comboBoxEquipment.FormattingEnabled = true;
-            this.comboBoxEquipment.Location = new System.Drawing.Point(127, 37);
-            this.comboBoxEquipment.Name = "comboBoxEquipment";
-            this.comboBoxEquipment.Size = new System.Drawing.Size(132, 27);
-            this.comboBoxEquipment.TabIndex = 0;
+            this.buttonAddEquipment.Location = new System.Drawing.Point(27, 232);
+            this.buttonAddEquipment.Name = "buttonAddEquipment";
+            this.buttonAddEquipment.Size = new System.Drawing.Size(206, 41);
+            this.buttonAddEquipment.TabIndex = 15;
+            this.buttonAddEquipment.Text = "Add equipment";
+            this.buttonAddEquipment.UseVisualStyleBackColor = true;
             // 
-            // labelSelectEquipment
+            // richTextBoxInfoOfEquipment
             // 
-            this.labelSelectEquipment.AutoSize = true;
-            this.labelSelectEquipment.Location = new System.Drawing.Point(6, 40);
-            this.labelSelectEquipment.Name = "labelSelectEquipment";
-            this.labelSelectEquipment.Size = new System.Drawing.Size(115, 19);
-            this.labelSelectEquipment.TabIndex = 1;
-            this.labelSelectEquipment.Text = "Select equipment:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(109, 79);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 19);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "OR";
-            // 
-            // labelName
-            // 
-            this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(10, 117);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(49, 19);
-            this.labelName.TabIndex = 3;
-            this.labelName.Text = "Name:";
-            // 
-            // textBoxNameOfEquipment
-            // 
-            this.textBoxNameOfEquipment.Location = new System.Drawing.Point(64, 115);
-            this.textBoxNameOfEquipment.Name = "textBoxNameOfEquipment";
-            this.textBoxNameOfEquipment.Size = new System.Drawing.Size(195, 26);
-            this.textBoxNameOfEquipment.TabIndex = 4;
+            this.richTextBoxInfoOfEquipment.Location = new System.Drawing.Point(64, 166);
+            this.richTextBoxInfoOfEquipment.Name = "richTextBoxInfoOfEquipment";
+            this.richTextBoxInfoOfEquipment.Size = new System.Drawing.Size(195, 52);
+            this.richTextBoxInfoOfEquipment.TabIndex = 14;
+            this.richTextBoxInfoOfEquipment.Text = "";
             // 
             // labelInfo
             // 
@@ -238,22 +212,47 @@ namespace CarDealer.Forms
             this.labelInfo.TabIndex = 5;
             this.labelInfo.Text = "Info:";
             // 
-            // richTextBoxInfoOfEquipment
+            // textBoxNameOfEquipment
             // 
-            this.richTextBoxInfoOfEquipment.Location = new System.Drawing.Point(64, 166);
-            this.richTextBoxInfoOfEquipment.Name = "richTextBoxInfoOfEquipment";
-            this.richTextBoxInfoOfEquipment.Size = new System.Drawing.Size(195, 52);
-            this.richTextBoxInfoOfEquipment.TabIndex = 14;
-            this.richTextBoxInfoOfEquipment.Text = "";
+            this.textBoxNameOfEquipment.Location = new System.Drawing.Point(64, 115);
+            this.textBoxNameOfEquipment.Name = "textBoxNameOfEquipment";
+            this.textBoxNameOfEquipment.Size = new System.Drawing.Size(195, 26);
+            this.textBoxNameOfEquipment.TabIndex = 4;
             // 
-            // buttonAddEquipment
+            // labelName
             // 
-            this.buttonAddEquipment.Location = new System.Drawing.Point(27, 232);
-            this.buttonAddEquipment.Name = "buttonAddEquipment";
-            this.buttonAddEquipment.Size = new System.Drawing.Size(206, 41);
-            this.buttonAddEquipment.TabIndex = 15;
-            this.buttonAddEquipment.Text = "Add equipment";
-            this.buttonAddEquipment.UseVisualStyleBackColor = true;
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(10, 117);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(49, 19);
+            this.labelName.TabIndex = 3;
+            this.labelName.Text = "Name:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(109, 79);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 19);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "OR";
+            // 
+            // labelSelectEquipment
+            // 
+            this.labelSelectEquipment.AutoSize = true;
+            this.labelSelectEquipment.Location = new System.Drawing.Point(6, 40);
+            this.labelSelectEquipment.Name = "labelSelectEquipment";
+            this.labelSelectEquipment.Size = new System.Drawing.Size(115, 19);
+            this.labelSelectEquipment.TabIndex = 1;
+            this.labelSelectEquipment.Text = "Select equipment:";
+            // 
+            // comboBoxEquipment
+            // 
+            this.comboBoxEquipment.FormattingEnabled = true;
+            this.comboBoxEquipment.Location = new System.Drawing.Point(127, 37);
+            this.comboBoxEquipment.Name = "comboBoxEquipment";
+            this.comboBoxEquipment.Size = new System.Drawing.Size(132, 27);
+            this.comboBoxEquipment.TabIndex = 0;
             // 
             // EquipmentListView
             // 
@@ -308,8 +307,8 @@ namespace CarDealer.Forms
             this.Controls.Add(this.buttonDeleteEquipment);
             this.Controls.Add(this.EquipmentListView);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.textBoxPrize);
-            this.Controls.Add(this.labelPrize);
+            this.Controls.Add(this.textBoxPrice);
+            this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.textBoxColor);
             this.Controls.Add(this.labelColor);
             this.Controls.Add(this.textBoxChassis);
@@ -340,8 +339,8 @@ namespace CarDealer.Forms
         private System.Windows.Forms.TextBox textBoxChassis;
         private System.Windows.Forms.Label labelColor;
         private System.Windows.Forms.TextBox textBoxColor;
-        private System.Windows.Forms.Label labelPrize;
-        private System.Windows.Forms.TextBox textBoxPrize;
+        private System.Windows.Forms.Label labelPrice;
+        private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonAddEquipment;
         private System.Windows.Forms.RichTextBox richTextBoxInfoOfEquipment;

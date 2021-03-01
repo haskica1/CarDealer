@@ -12,7 +12,7 @@ namespace CarDealer.Models
         private string Model { get; set; }
         private string Color { get; set; }
         private string Engine { get; set; }
-        private double Prize { get; set; }
+        private double Price { get; set; }
         private Equipment Equipment { get; set; }
 
         public Car(string brand, string model, string color, string engine, double prize, Equipment equipment) {
@@ -20,7 +20,7 @@ namespace CarDealer.Models
             Model = model;
             Color = color;
             Engine = engine;
-            Prize = prize;
+            Price = prize;
             Equipment = equipment;
         }
 

@@ -14,7 +14,7 @@ namespace CarDealer.Models
     class Customer : User
     {
         private CustomersType Type { get; set; }
-        public Customer(string firstName, string lastName, string phoneNumber, string address, CustomersType customersType) : base(firstName, lastName, phoneNumber, address)
+        public Customer(string firstName, string lastName, string phoneNumber, string address, string email, CustomersType customersType) : base(firstName, lastName, phoneNumber, address, email)
         {
             Type = customersType;
         }

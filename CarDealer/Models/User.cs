@@ -13,12 +13,15 @@ namespace CarDealer.Models
         protected string PhoneNumber { get; set; }
         protected string Address { get; set; }
 
-        public User(string firstName, string lastName, string phoneNumber, string address)
+        protected string Email { get; set; }
+
+        public User(string firstName, string lastName, string phoneNumber, string address, string email)
         {
             FirstName = firstName;
             LastName = lastName;
             PhoneNumber = phoneNumber;
             Address = address;
+            Email = email;
         }
     }
 }
