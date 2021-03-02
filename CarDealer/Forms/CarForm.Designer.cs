@@ -50,10 +50,10 @@ namespace CarDealer.Forms
             this.label2 = new System.Windows.Forms.Label();
             this.labelSelectEquipment = new System.Windows.Forms.Label();
             this.comboBoxEquipment = new System.Windows.Forms.ComboBox();
-            this.EquipmentListView = new System.Windows.Forms.ListView();
             this.buttonDeleteEquipment = new System.Windows.Forms.Button();
             this.buttonAddCar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.listBoxEquipment = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -194,6 +194,7 @@ namespace CarDealer.Forms
             this.buttonAddEquipment.TabIndex = 15;
             this.buttonAddEquipment.Text = "Add equipment";
             this.buttonAddEquipment.UseVisualStyleBackColor = true;
+            this.buttonAddEquipment.Click += new System.EventHandler(this.buttonAddEquipment_Click);
             // 
             // richTextBoxInfoOfEquipment
             // 
@@ -254,15 +255,6 @@ namespace CarDealer.Forms
             this.comboBoxEquipment.Size = new System.Drawing.Size(132, 27);
             this.comboBoxEquipment.TabIndex = 0;
             // 
-            // EquipmentListView
-            // 
-            this.EquipmentListView.HideSelection = false;
-            this.EquipmentListView.Location = new System.Drawing.Point(368, 73);
-            this.EquipmentListView.Name = "EquipmentListView";
-            this.EquipmentListView.Size = new System.Drawing.Size(315, 413);
-            this.EquipmentListView.TabIndex = 14;
-            this.EquipmentListView.UseCompatibleStateImageBehavior = false;
-            // 
             // buttonDeleteEquipment
             // 
             this.buttonDeleteEquipment.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -284,6 +276,7 @@ namespace CarDealer.Forms
             this.buttonAddCar.TabIndex = 16;
             this.buttonAddCar.Text = "ADD CAR";
             this.buttonAddCar.UseVisualStyleBackColor = true;
+            this.buttonAddCar.Click += new System.EventHandler(this.buttonAddCar_Click);
             // 
             // label1
             // 
@@ -296,16 +289,24 @@ namespace CarDealer.Forms
             this.label1.TabIndex = 17;
             this.label1.Text = "Adding car...";
             // 
+            // listBoxEquipment
+            // 
+            this.listBoxEquipment.FormattingEnabled = true;
+            this.listBoxEquipment.Location = new System.Drawing.Point(368, 73);
+            this.listBoxEquipment.Name = "listBoxEquipment";
+            this.listBoxEquipment.Size = new System.Drawing.Size(328, 420);
+            this.listBoxEquipment.TabIndex = 18;
+            // 
             // CarForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 592);
+            this.Controls.Add(this.listBoxEquipment);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonAddCar);
             this.Controls.Add(this.buttonDeleteEquipment);
-            this.Controls.Add(this.EquipmentListView);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBoxPrice);
             this.Controls.Add(this.labelPrice);
@@ -350,9 +351,9 @@ namespace CarDealer.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelSelectEquipment;
         private System.Windows.Forms.ComboBox comboBoxEquipment;
-        private System.Windows.Forms.ListView EquipmentListView;
         private System.Windows.Forms.Button buttonDeleteEquipment;
         private System.Windows.Forms.Button buttonAddCar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox listBoxEquipment;
     }
 }

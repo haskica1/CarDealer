@@ -17,7 +17,7 @@ namespace CarDealer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PurchaseForm());
+            Application.Run(new CarForm());
         }
     }
 }

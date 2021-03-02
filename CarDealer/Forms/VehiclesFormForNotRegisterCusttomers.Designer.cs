@@ -29,7 +29,6 @@ namespace CarDealer.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.listViewVehicles = new System.Windows.Forms.ListView();
             this.buttonSpecification = new System.Windows.Forms.Button();
             this.labelFilters = new System.Windows.Forms.Label();
             this.labelBrand = new System.Windows.Forms.Label();
@@ -43,16 +42,8 @@ namespace CarDealer.Forms
             this.textBoxMaximumPrice = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.listBoxVehicles = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
-            // 
-            // listViewVehicles
-            // 
-            this.listViewVehicles.HideSelection = false;
-            this.listViewVehicles.Location = new System.Drawing.Point(55, 64);
-            this.listViewVehicles.Name = "listViewVehicles";
-            this.listViewVehicles.Size = new System.Drawing.Size(420, 330);
-            this.listViewVehicles.TabIndex = 0;
-            this.listViewVehicles.UseCompatibleStateImageBehavior = false;
             // 
             // buttonSpecification
             // 
@@ -64,6 +55,7 @@ namespace CarDealer.Forms
             this.buttonSpecification.TabIndex = 1;
             this.buttonSpecification.Text = "Specification";
             this.buttonSpecification.UseVisualStyleBackColor = true;
+            this.buttonSpecification.Click += new System.EventHandler(this.buttonSpecification_Click);
             // 
             // labelFilters
             // 
@@ -182,11 +174,20 @@ namespace CarDealer.Forms
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
             // 
+            // listBoxVehicles
+            // 
+            this.listBoxVehicles.FormattingEnabled = true;
+            this.listBoxVehicles.Location = new System.Drawing.Point(55, 64);
+            this.listBoxVehicles.Name = "listBoxVehicles";
+            this.listBoxVehicles.Size = new System.Drawing.Size(420, 316);
+            this.listBoxVehicles.TabIndex = 14;
+            // 
             // VehiclesFormForNotRegisterCusttomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 529);
+            this.Controls.Add(this.listBoxVehicles);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxMaximumPrice);
@@ -200,7 +201,6 @@ namespace CarDealer.Forms
             this.Controls.Add(this.labelBrand);
             this.Controls.Add(this.labelFilters);
             this.Controls.Add(this.buttonSpecification);
-            this.Controls.Add(this.listViewVehicles);
             this.Name = "VehiclesFormForNotRegisterCusttomers";
             this.Text = "Vehicles";
             this.ResumeLayout(false);
@@ -209,8 +209,6 @@ namespace CarDealer.Forms
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView listViewVehicles;
         private System.Windows.Forms.Button buttonSpecification;
         private System.Windows.Forms.Label labelFilters;
         private System.Windows.Forms.Label labelBrand;
@@ -224,5 +222,6 @@ namespace CarDealer.Forms
         private System.Windows.Forms.TextBox textBoxMaximumPrice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.ListBox listBoxVehicles;
     }
 }
