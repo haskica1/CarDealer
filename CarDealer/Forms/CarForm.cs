@@ -17,13 +17,25 @@ namespace CarDealer.Forms
 
         private SQLDataAccess sql = new SQLDataAccess();
         private List<Equipment> equipments = new List<Equipment>();
+        private List<Equipment> allEquipments = new List<Equipment>();
 
 
         public CarForm()
         {
             InitializeComponent();
 
-            
+            allEquipments = sql.GetAllEquipments();
+
+            WireUpLists();
+        }
+
+        private void WireUpLists()
+        {
+            comboBoxEquipment.DataSource = allEquipments;
+            comboBoxEquipment.DisplayMember = "Name";
+
+
+            listBoxEquipment.DisplayMember = "FullEquipmentName";
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -59,7 +71,7 @@ namespace CarDealer.Forms
         private void buttonAddCar_Click(object sender, EventArgs e)
         {
             Car car = new Car(0,textBoxBrand.Text, textBoxModel.Text, textBoxColor.Text, textBoxEngine.Text, textBoxChassis.Text, Double.Parse(textBoxPrice.Text));
-            sql.AddCar(car);
+            sql.AddCar(car, equipments);
 
 
             textBoxChassis.Text = "";
@@ -70,25 +82,57 @@ namespace CarDealer.Forms
             textBoxPrice.Text = "";
 
 
+            textBoxNameOfEquipment.Text = "";
+            richTextBoxInfoOfEquipment.Text = "";
 
+            listBoxEquipment.Items.Clear();
+
+            return;
         }
 
         private void buttonAddEquipment_Click(object sender, EventArgs e)
         {
+            Equipment equipment;
 
-            Equipment equipment = new Equipment(0, textBoxNameOfEquipment.Text, richTextBoxInfoOfEquipment.Text);
-            sql.AddEquipment(equipment);
+            if (textBoxNameOfEquipment.Text != "")
+            {
+                if (!ValidateField(textBoxNameOfEquipment.Text))
+                {
+                    MessageBox.Show("Equipment already exist in dropdown box!", "Error");
+                    return;
+                }
+
+                equipment = new Equipment(0,textBoxNameOfEquipment.Text, richTextBoxInfoOfEquipment.Text);
+            }
+            else
+            {
+                equipment = (Equipment)comboBoxEquipment.SelectedItem;
+            }
+
+
+            equipments.Add(equipment);
+            listBoxEquipment.Items.Add(equipment);
 
             textBoxNameOfEquipment.Text = "";
             richTextBoxInfoOfEquipment.Text = "";
 
-            equipments.Add(equipment);
 
-            listBoxEquipment.Items.Add(equipment);
-            listBoxEquipment.DisplayMember = "FullEquipmentName";
-
+            WireUpLists();
         }
 
+        private bool ValidateField(string equipmentName)
+        {
+            foreach(Equipment equinpment in allEquipments)
+            {
+                if (equinpment.Name.Equals(equipmentName)) return false;
+            }
+            return true;
+        }
 
+        private void buttonDeleteEquipment_Click(object sender, EventArgs e)
+        {
+            equipments.Remove((Equipment)listBoxEquipment.SelectedItem);
+            listBoxEquipment.Items.Remove((Equipment)listBoxEquipment.SelectedItem);
+        }
     }
 }

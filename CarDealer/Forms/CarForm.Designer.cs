@@ -265,6 +265,7 @@ namespace CarDealer.Forms
             this.buttonDeleteEquipment.TabIndex = 15;
             this.buttonDeleteEquipment.Text = "Delete selected";
             this.buttonDeleteEquipment.UseVisualStyleBackColor = true;
+            this.buttonDeleteEquipment.Click += new System.EventHandler(this.buttonDeleteEquipment_Click);
             // 
             // buttonAddCar
             // 
