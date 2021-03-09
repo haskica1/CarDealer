@@ -25,6 +25,14 @@ namespace CarDealer.DataAccess
       
         }
 
+        internal List<User> GetAllUsers()
+        {
+
+            var rez = connection.Query<User>("dbo.GetAllUsers").ToList();
+            return rez;
+
+        }
+
         internal List<Equipment> GetAllEquipments()
         {
             return connection.Query<Equipment>("dbo.GetAllEquipments").ToList();
@@ -57,6 +65,24 @@ namespace CarDealer.DataAccess
             WireUpCarAndEquipments(car, equipments);
 
             
+        }
+
+        internal void AddUser(Customer newUser)
+        {
+            var p = new DynamicParameters();
+            p.Add("@firstName", newUser.FirstName);
+            p.Add("@lastName", newUser.LastName);
+            p.Add("@phoneNumber", newUser.PhoneNumber);
+            p.Add("@address", newUser.Address);
+            p.Add("@username", newUser.Username);
+            p.Add("@password", newUser.Password);
+            p.Add("@email", newUser.Email);
+            p.Add("@type", 0);
+            p.Add("@temp", 0, DbType.Int32, direction: ParameterDirection.Output);
+
+            connection.Execute("dbo.AddUser", p, commandType: CommandType.StoredProcedure);
+
+            newUser.Id = p.Get<int>("@temp");
         }
 
         private void WireUpCarAndEquipments(Car car, List<Equipment> equipments)

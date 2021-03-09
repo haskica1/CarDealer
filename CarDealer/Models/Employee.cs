@@ -17,7 +17,8 @@ namespace CarDealer.Models
     class Employee : User
     {
         private EmployeeType Type { get; set; }
-        public Employee(string firstName, string lastName, string phoneNumber, string address, string email, EmployeeType employeeType) : base(firstName,lastName,phoneNumber,address, email)
+        public Employee(int id, string firstName, string lastName, string phoneNumber, string address, string username, string password, string email, EmployeeType employeeType)
+            : base(id, firstName,lastName,phoneNumber,address,username,password,email)
         {
             Type = employeeType;
         }
