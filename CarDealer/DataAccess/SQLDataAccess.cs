@@ -33,6 +33,21 @@ namespace CarDealer.DataAccess
 
         }
 
+        internal User getUserByUsernameAndPassword(string username, string password)
+        {
+            var p = new DynamicParameters();
+            p.Add("@username", username);
+            p.Add("@password", password);
+
+            List<User> users = connection.Query<User>("dbo.GetUserByUsernameAndPassword", p, commandType: CommandType.StoredProcedure).ToList();
+            if (users.Count != 0)
+            {
+                User user = users.First();
+                return user;
+            }
+            return null;
+        }
+
         internal List<Equipment> GetAllEquipments()
         {
             return connection.Query<Equipment>("dbo.GetAllEquipments").ToList();

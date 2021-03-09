@@ -83,6 +83,7 @@ namespace CarDealer.Forms
             this.buttonNext.TabIndex = 4;
             this.buttonNext.Text = "Next";
             this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
             // buttonCancel
             // 
@@ -108,6 +109,7 @@ namespace CarDealer.Forms
             this.Controls.Add(this.labelUsername);
             this.Name = "LogInForm";
             this.Text = "Log in";
+            this.Load += new System.EventHandler(this.LogInForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
