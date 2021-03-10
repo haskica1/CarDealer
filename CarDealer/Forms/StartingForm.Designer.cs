@@ -143,6 +143,7 @@ namespace CarDealer.Forms
             this.Controls.Add(this.comboBoxStore);
             this.Name = "StartingForm";
             this.Text = "Car Dealer";
+            this.Load += new System.EventHandler(this.StartingForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace CarDealer.Forms
 {
-    public partial class StartingForm : Form
+    public partial class AddStorageForm : Form
     {
-        public StartingForm()
+        public AddStorageForm()
         {
             InitializeComponent();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void StartingForm_Load(object sender, EventArgs e)
+        private void labelLastName_Click(object sender, EventArgs e)
         {
 
         }

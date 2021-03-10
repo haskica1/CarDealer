@@ -29,5 +29,13 @@ namespace CarDealer.Models
             Email = email;
         }
 
+
+        public string FullUserName
+        {
+            get {
+                return $"{FirstName} {LastName}";
+            }
+        }
+
     }
 }

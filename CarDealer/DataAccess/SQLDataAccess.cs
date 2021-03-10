@@ -25,6 +25,18 @@ namespace CarDealer.DataAccess
       
         }
 
+        internal List<Employee> getAllEmployees()
+        {
+            var rez = connection.Query<Employee>("dbo.GetAllEmployees").ToList();
+            return rez;
+        }
+
+        internal List<Storage> getAllStorages()
+        {
+            var rez = connection.Query<Storage>("dbo.GetAllStorages").ToList();
+            return rez;
+        }
+
         internal List<User> GetAllUsers()
         {
 

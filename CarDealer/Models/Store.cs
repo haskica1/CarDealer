@@ -9,13 +9,16 @@ namespace CarDealer.Models
     class Store
     {
         public string Name { get; set; }
-        public Storage Storage { get; set; }
+
+        public string Address { get; set; }
+        public List<Storage> Storages { get; set; }
         public List<Employee> Employees { get; set; }
 
-        public Store(string name, Storage storage, List<Employee> employees)
+        public Store(string name, string address, List<Storage> storages, List<Employee> employees)
         {
             Name = name;
-            Storage = storage;
+            Address = address;
+            Storages = storages;
             Employees = employees;
         }
     }

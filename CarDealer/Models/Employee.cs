@@ -23,5 +23,11 @@ namespace CarDealer.Models
             Type = employeeType;
         }
 
+        public Employee(int id, string firstName, string lastName, string phoneNumber, string address, string username, string password, string email, int userType = -1)
+            : base(id, firstName, lastName, phoneNumber, address, username, password, email)
+        {
+            //Type = employeeType;
+        }
+
     }
 }
