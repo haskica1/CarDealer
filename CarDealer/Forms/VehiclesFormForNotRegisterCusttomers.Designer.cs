@@ -203,6 +203,7 @@ namespace CarDealer.Forms
             this.Controls.Add(this.buttonSpecification);
             this.Name = "VehiclesFormForNotRegisterCusttomers";
             this.Text = "Vehicles";
+            this.Load += new System.EventHandler(this.VehiclesFormForNotRegisterCusttomers_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

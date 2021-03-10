@@ -16,9 +16,12 @@ namespace CarDealer.Forms
     {
         SQLDataAccess sql = new SQLDataAccess();
         List<string> types = new List<string> {"VIP","REGULAR","SALESMAN", "ADMINISTRATION" };
-        public AddUserForm()
+        StartingForm StartingForm { get; set; }
+        public AddUserForm(StartingForm startingForm)
         {
             InitializeComponent();
+
+            StartingForm = startingForm;
 
             textBoxPassword.PasswordChar = '*';
             types.ForEach(delegate (string data) { comboBoxType.Items.Add(data); } );
@@ -27,13 +30,14 @@ namespace CarDealer.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Customer newUser = null;
             if(!ValidateFields(textBoxUsername.Text, textBoxEmail.Text, textBoxPhoneNumber.Text))
             {
                 MessageBox.Show("Wrong data!!! \nPlease try again.", "Wrong data!!!");
             }
             else
             {
-                Customer newUser = new Customer(0, textBoxFirstName.Text, textBoxLastName.Text, textBoxPhoneNumber.Text, textBoxAddress.Text, textBoxUsername.Text, textBoxPassword.Text, textBoxEmail.Text,CustomersType.REGULAR);
+                newUser = new Customer(0, textBoxFirstName.Text, textBoxLastName.Text, textBoxPhoneNumber.Text, textBoxAddress.Text, textBoxUsername.Text, textBoxPassword.Text, textBoxEmail.Text,CustomersType.REGULAR);
                 sql.AddUser(newUser);
             }
 
@@ -46,12 +50,17 @@ namespace CarDealer.Forms
             textBoxPhoneNumber.Text = "";
             textBoxUsername.Text = "";
 
+            this.Close();
+
+            StartingForm.SetUser(newUser);
+            StartingForm.Show();
+
 
         }
 
         private bool ValidateFields(string username, string email, string telephoneNumber)
         {
-            List<User> users = sql.GetAllUsers();
+            List<User> users = sql.getAllUsers();
 
             //TODO -  NAPRAVITI ZA SVAKI FIELD NJEGOVO ISPITIVANJE.
 
@@ -60,6 +69,11 @@ namespace CarDealer.Forms
                 if (user.Username.Equals(username) || user.Email.Equals(email) || user.PhoneNumber.Equals(telephoneNumber)) return false;
             }
             return true;
+        }
+
+        private void AddUserForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

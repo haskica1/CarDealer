@@ -244,6 +244,7 @@ namespace CarDealer.Forms
             this.Controls.Add(this.labelFirstName);
             this.Name = "AddUserForm";
             this.Text = "Add user";
+            this.Load += new System.EventHandler(this.AddUserForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

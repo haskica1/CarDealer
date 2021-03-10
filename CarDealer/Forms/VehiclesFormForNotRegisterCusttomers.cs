@@ -14,21 +14,20 @@ namespace CarDealer.Forms
 {
     public partial class VehiclesFormForNotRegisterCusttomers : Form
     {
-
-        
-
         List<Car> cars = new List<Car>();
 
-        public VehiclesFormForNotRegisterCusttomers()
+        User User { get;  set; }
+        public VehiclesFormForNotRegisterCusttomers(StartingForm startingForm)
         {
             InitializeComponent();
 
-
-            
+            User = startingForm.GetUser();
 
             listBoxVehicles.DataSource = cars;
             listBoxVehicles.DisplayMember = "CarName";
         }
+
+
 
         private void listViewVehicles_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -36,7 +35,7 @@ namespace CarDealer.Forms
             SQLDataAccess sql = new SQLDataAccess();
 
 
-            cars = sql.GetAllVehicles();
+            cars = sql.getAllVehicles();
 
 
             listBoxVehicles.DataSource = cars;
@@ -48,11 +47,16 @@ namespace CarDealer.Forms
             SQLDataAccess sql = new SQLDataAccess();
 
 
-            cars = sql.GetAllVehicles();
+            cars = sql.getAllVehicles();
 
 
             listBoxVehicles.DataSource = cars;
             listBoxVehicles.DisplayMember = "CarName";
+        }
+
+        private void VehiclesFormForNotRegisterCusttomers_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

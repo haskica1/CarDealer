@@ -17,12 +17,18 @@ namespace CarDealer.DataAccess
             connection = new System.Data.SqlClient.SqlConnection(GlobalConfigurations.ConnString("CarDealerDB"));
         }
 
-        internal List<Car> GetAllVehicles()
+        internal List<Car> getAllVehicles()
         {
 
                 var rez = connection.Query<Car>("dbo.GetAllCars").ToList();
                 return rez;
       
+        }
+
+        internal List<Store> getAllStores()
+        {
+            var rez = connection.Query<Store>("dbo.GetAllStores").ToList();
+            return rez;
         }
 
         internal List<Employee> getAllEmployees()
@@ -37,12 +43,22 @@ namespace CarDealer.DataAccess
             return rez;
         }
 
-        internal List<User> GetAllUsers()
+        internal List<User> getAllUsers()
         {
 
             var rez = connection.Query<User>("dbo.GetAllUsers").ToList();
             return rez;
 
+        }
+
+        internal int getUserType(int id)
+        {
+
+            var p = new DynamicParameters();
+            p.Add("@userId", id);
+
+            int rez = connection.Query<int>("dbo.GetUserType",p,commandType: CommandType.StoredProcedure).ToList().First();
+            return rez;
         }
 
         internal User getUserByUsernameAndPassword(string username, string password)

@@ -17,6 +17,9 @@ namespace CarDealer.Models
         public string Password { get; set; }
         public string Email { get; set; }
 
+
+        public User() { }
+
         public User(int id, string firstName, string lastName, string phoneNumber, string address, string  username, string password, string email, int userType = -1)
         {
             Id = id;

@@ -69,6 +69,7 @@ namespace CarDealer.Forms
             this.buttonNext.TabIndex = 2;
             this.buttonNext.Text = "Next";
             this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
             // buttonExit
             // 
@@ -80,6 +81,7 @@ namespace CarDealer.Forms
             this.buttonExit.TabIndex = 3;
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // labelWelcome
             // 
@@ -98,12 +100,14 @@ namespace CarDealer.Forms
             this.linkLabelLogIn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabelLogIn.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.linkLabelLogIn.LinkArea = new System.Windows.Forms.LinkArea(0, 0);
+            this.linkLabelLogIn.LinkVisited = true;
             this.linkLabelLogIn.Location = new System.Drawing.Point(377, 15);
             this.linkLabelLogIn.Name = "linkLabelLogIn";
             this.linkLabelLogIn.Size = new System.Drawing.Size(47, 19);
             this.linkLabelLogIn.TabIndex = 5;
             this.linkLabelLogIn.Text = "Log in";
-            this.linkLabelLogIn.UseMnemonic = false;
+            this.linkLabelLogIn.VisitedLinkColor = System.Drawing.SystemColors.HotTrack;
+            this.linkLabelLogIn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLogIn_LinkClicked);
             // 
             // linkLabelRegister
             // 
@@ -111,11 +115,15 @@ namespace CarDealer.Forms
             this.linkLabelRegister.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabelRegister.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.linkLabelRegister.LinkArea = new System.Windows.Forms.LinkArea(0, 0);
+            this.linkLabelRegister.LinkVisited = true;
             this.linkLabelRegister.Location = new System.Drawing.Point(377, 34);
             this.linkLabelRegister.Name = "linkLabelRegister";
             this.linkLabelRegister.Size = new System.Drawing.Size(58, 19);
             this.linkLabelRegister.TabIndex = 6;
             this.linkLabelRegister.Text = "Register";
+            this.linkLabelRegister.UseWaitCursor = true;
+            this.linkLabelRegister.VisitedLinkColor = System.Drawing.SystemColors.HotTrack;
+            this.linkLabelRegister.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelRegister_LinkClicked);
             // 
             // labelName
             // 
@@ -156,8 +164,8 @@ namespace CarDealer.Forms
         private System.Windows.Forms.Button buttonNext;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Label labelWelcome;
-        private System.Windows.Forms.LinkLabel linkLabelLogIn;
         private System.Windows.Forms.LinkLabel linkLabelRegister;
         private System.Windows.Forms.Label labelName;
+        public System.Windows.Forms.LinkLabel linkLabelLogIn;
     }
 }
