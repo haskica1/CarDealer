@@ -48,6 +48,13 @@ namespace CarDealer.Models
             }
                 
         }
+        public string CarSpecifications
+        {
+            get
+            {
+                return $"{Brand}, {Model}, {Color}, {Price}";
+            }
+        }
 
     }
 }

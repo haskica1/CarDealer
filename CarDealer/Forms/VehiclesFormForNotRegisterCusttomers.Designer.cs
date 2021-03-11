@@ -43,6 +43,8 @@ namespace CarDealer.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.buttonExit = new System.Windows.Forms.Button();
             this.listBoxVehicles = new System.Windows.Forms.ListBox();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonDeletFilters = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonSpecification
@@ -88,6 +90,7 @@ namespace CarDealer.Forms
             this.comboBoxBrand.Name = "comboBoxBrand";
             this.comboBoxBrand.Size = new System.Drawing.Size(164, 21);
             this.comboBoxBrand.TabIndex = 4;
+            this.comboBoxBrand.SelectedIndexChanged += new System.EventHandler(this.comboBoxBrand_SelectedIndexChanged);
             // 
             // labelModel
             // 
@@ -107,6 +110,7 @@ namespace CarDealer.Forms
             this.comboBoxModel.Name = "comboBoxModel";
             this.comboBoxModel.Size = new System.Drawing.Size(164, 21);
             this.comboBoxModel.TabIndex = 6;
+            this.comboBoxModel.SelectedIndexChanged += new System.EventHandler(this.comboBoxModel_SelectedIndexChanged);
             // 
             // labelColor
             // 
@@ -173,6 +177,7 @@ namespace CarDealer.Forms
             this.buttonExit.TabIndex = 13;
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // listBoxVehicles
             // 
@@ -182,11 +187,37 @@ namespace CarDealer.Forms
             this.listBoxVehicles.Size = new System.Drawing.Size(420, 316);
             this.listBoxVehicles.TabIndex = 14;
             // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSearch.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonSearch.Location = new System.Drawing.Point(548, 228);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(190, 30);
+            this.buttonSearch.TabIndex = 15;
+            this.buttonSearch.Text = "Search";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // buttonDeletFilters
+            // 
+            this.buttonDeletFilters.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeletFilters.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonDeletFilters.Location = new System.Drawing.Point(548, 278);
+            this.buttonDeletFilters.Name = "buttonDeletFilters";
+            this.buttonDeletFilters.Size = new System.Drawing.Size(190, 30);
+            this.buttonDeletFilters.TabIndex = 16;
+            this.buttonDeletFilters.Text = "Delete filters";
+            this.buttonDeletFilters.UseVisualStyleBackColor = true;
+            this.buttonDeletFilters.Click += new System.EventHandler(this.buttonDeletFilters_Click);
+            // 
             // VehiclesFormForNotRegisterCusttomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(817, 529);
+            this.ClientSize = new System.Drawing.Size(817, 489);
+            this.Controls.Add(this.buttonDeletFilters);
+            this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.listBoxVehicles);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.label1);
@@ -224,5 +255,7 @@ namespace CarDealer.Forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.ListBox listBoxVehicles;
+        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.Button buttonDeletFilters;
     }
 }

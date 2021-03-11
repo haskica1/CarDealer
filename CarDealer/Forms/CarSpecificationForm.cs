@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CarDealer.DataAccess;
+using CarDealer.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,28 @@ namespace CarDealer.Forms
 {
     public partial class CarSpecificationForm : Form
     {
-        public CarSpecificationForm()
+        Car Car { get; set; }
+        SQLDataAccess sql = new SQLDataAccess();
+        public CarSpecificationForm(VehiclesFormForNotRegisterCusttomers vehiclesFormForNotRegisterCusttomers)
         {
             InitializeComponent();
+            Car = vehiclesFormForNotRegisterCusttomers.GetSelectedCar();
+
+            labelBrandName.Text = Car.Brand;
+            labelModelName.Text = Car.Model;
+            labelEngineType.Text = Car.Engine;
+            labelColorName.Text = Car.Color;
+            labelChassisNumber.Text = Car.Chassis;
+            labelPriceAmount.Text = Car.Price.ToString();
+
+            listBoxEquipment.DataSource = sql.getEquipmentsOfCar(Car);
+            listBoxEquipment.DisplayMember = "FullEquipmentName";
+
+        }
+
+        private void CarSpecificationForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

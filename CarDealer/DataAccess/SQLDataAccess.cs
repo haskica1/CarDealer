@@ -31,6 +31,36 @@ namespace CarDealer.DataAccess
             return rez;
         }
 
+        internal List<string> getAllBrands()
+        {
+            var rez = connection.Query<string>("dbo.GetAllBrands").ToList();
+            return rez;
+        }
+
+        internal List<string> getAllColors()
+        {
+            var rez = connection.Query<string>("dbo.GetAllColors").ToList();
+            return rez;
+        }
+
+        internal List<Equipment> getEquipmentsOfCar(Car car)
+        {
+            var p = new DynamicParameters();
+            p.Add("@carID", car.Id);
+
+            var rez = connection.Query<Equipment>("dbo.GetEquipmentsOfCar", p, commandType: CommandType.StoredProcedure).ToList();
+            return rez;
+        }
+
+        internal List<string> getAllModels(string brand)
+        {
+            var p = new DynamicParameters();
+            p.Add("@brand", brand);
+
+            var rez = connection.Query<string>("dbo.GetAllModels",p,commandType: CommandType.StoredProcedure).ToList();
+            return rez;
+        }
+
         internal List<Employee> getAllEmployees()
         {
             var rez = connection.Query<Employee>("dbo.GetAllEmployees").ToList();
@@ -49,6 +79,20 @@ namespace CarDealer.DataAccess
             var rez = connection.Query<User>("dbo.GetAllUsers").ToList();
             return rez;
 
+        }
+
+        internal List<Car> searchCar(string brand, string model, string color, string minPrice, string maxPrice)
+        {
+            var p = new DynamicParameters();
+            p.Add("@brand", brand);
+            p.Add("@model", model);
+            p.Add("@color", color);
+            p.Add("@minPrice", minPrice);
+            p.Add("@maxPrice", maxPrice);
+
+
+            var rez = connection.Query<Car>("dbo.SearchCar", p, commandType: CommandType.StoredProcedure).ToList();
+            return rez;
         }
 
         internal int getUserType(int id)

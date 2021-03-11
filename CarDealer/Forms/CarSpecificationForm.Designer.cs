@@ -42,8 +42,8 @@ namespace CarDealer.Forms
             this.labelColorName = new System.Windows.Forms.Label();
             this.labelPriceAmount = new System.Windows.Forms.Label();
             this.labelEquipment = new System.Windows.Forms.Label();
-            this.listViewEquipment = new System.Windows.Forms.ListView();
             this.buttonPurchase = new System.Windows.Forms.Button();
+            this.listBoxEquipment = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // labelPrice
@@ -183,33 +183,32 @@ namespace CarDealer.Forms
             this.labelEquipment.TabIndex = 30;
             this.labelEquipment.Text = "Equipment:";
             // 
-            // listViewEquipment
-            // 
-            this.listViewEquipment.HideSelection = false;
-            this.listViewEquipment.Location = new System.Drawing.Point(348, 96);
-            this.listViewEquipment.Name = "listViewEquipment";
-            this.listViewEquipment.Size = new System.Drawing.Size(263, 134);
-            this.listViewEquipment.TabIndex = 31;
-            this.listViewEquipment.UseCompatibleStateImageBehavior = false;
-            // 
             // buttonPurchase
             // 
             this.buttonPurchase.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPurchase.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.buttonPurchase.Location = new System.Drawing.Point(110, 274);
+            this.buttonPurchase.Location = new System.Drawing.Point(110, 260);
             this.buttonPurchase.Name = "buttonPurchase";
             this.buttonPurchase.Size = new System.Drawing.Size(400, 30);
             this.buttonPurchase.TabIndex = 32;
             this.buttonPurchase.Text = "PURCHASE CAR";
             this.buttonPurchase.UseVisualStyleBackColor = true;
             // 
+            // listBoxEquipment
+            // 
+            this.listBoxEquipment.FormattingEnabled = true;
+            this.listBoxEquipment.Location = new System.Drawing.Point(348, 96);
+            this.listBoxEquipment.Name = "listBoxEquipment";
+            this.listBoxEquipment.Size = new System.Drawing.Size(260, 134);
+            this.listBoxEquipment.TabIndex = 33;
+            // 
             // CarSpecificationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(636, 332);
+            this.Controls.Add(this.listBoxEquipment);
             this.Controls.Add(this.buttonPurchase);
-            this.Controls.Add(this.listViewEquipment);
             this.Controls.Add(this.labelEquipment);
             this.Controls.Add(this.labelPriceAmount);
             this.Controls.Add(this.labelColorName);
@@ -225,6 +224,7 @@ namespace CarDealer.Forms
             this.Controls.Add(this.labelBrand);
             this.Name = "CarSpecificationForm";
             this.Text = "Car spevifications";
+            this.Load += new System.EventHandler(this.CarSpecificationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,7 +244,7 @@ namespace CarDealer.Forms
         private System.Windows.Forms.Label labelColorName;
         private System.Windows.Forms.Label labelPriceAmount;
         private System.Windows.Forms.Label labelEquipment;
-        private System.Windows.Forms.ListView listViewEquipment;
         private System.Windows.Forms.Button buttonPurchase;
+        private System.Windows.Forms.ListBox listBoxEquipment;
     }
 }
