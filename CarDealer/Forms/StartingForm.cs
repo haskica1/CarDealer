@@ -50,6 +50,11 @@ namespace CarDealer.Forms
 
         }
 
+        internal Store getStore()
+        {
+            return (Store)comboBoxStore.SelectedItem;
+        }
+
         private void buttonExit_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
@@ -68,7 +73,7 @@ namespace CarDealer.Forms
             User = user;
             labelWelcome.Text = labelWelcome.Text + $"\n{User.FullUserName}";
         }
-        internal User GetUser()
+        internal User getUser()
         {
             return User;
         }

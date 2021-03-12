@@ -21,6 +21,7 @@ namespace CarDealer.Forms
         SQLDataAccess sql = new SQLDataAccess();
         Car SelectedCar { get; set; }
         User User { get;  set; }
+        Store Store { get; set; }
         public VehiclesFormForNotRegisterCusttomers(StartingForm startingForm)
         {
             InitializeComponent();
@@ -29,7 +30,8 @@ namespace CarDealer.Forms
             brands = sql.getAllBrands();
             //models = sql.getAllModels();
             colors = sql.getAllColors();
-            User = startingForm.GetUser();
+            User = startingForm.getUser();
+            Store = startingForm.getStore();
 
             comboBoxBrand.DataSource = brands;
             comboBoxModel.DataSource = models;
@@ -41,7 +43,12 @@ namespace CarDealer.Forms
             listBoxVehicles.DisplayMember = "CarSpecifications";
         }
 
-        internal Car GetSelectedCar()
+        internal Store getStore()
+        {
+            return Store;
+        }
+
+        internal Car getSelectedCar()
         {
             return SelectedCar;
         }

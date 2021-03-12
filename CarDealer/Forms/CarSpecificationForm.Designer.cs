@@ -187,12 +187,13 @@ namespace CarDealer.Forms
             // 
             this.buttonPurchase.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPurchase.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.buttonPurchase.Location = new System.Drawing.Point(110, 260);
+            this.buttonPurchase.Location = new System.Drawing.Point(87, 260);
             this.buttonPurchase.Name = "buttonPurchase";
-            this.buttonPurchase.Size = new System.Drawing.Size(400, 30);
+            this.buttonPurchase.Size = new System.Drawing.Size(434, 48);
             this.buttonPurchase.TabIndex = 32;
             this.buttonPurchase.Text = "PURCHASE CAR";
             this.buttonPurchase.UseVisualStyleBackColor = true;
+            this.buttonPurchase.Click += new System.EventHandler(this.buttonPurchase_Click);
             // 
             // listBoxEquipment
             // 

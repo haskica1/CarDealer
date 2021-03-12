@@ -15,11 +15,13 @@ namespace CarDealer.Forms
     public partial class CarSpecificationForm : Form
     {
         Car Car { get; set; }
+        Store Store { get; set; }
         SQLDataAccess sql = new SQLDataAccess();
         public CarSpecificationForm(VehiclesFormForNotRegisterCusttomers vehiclesFormForNotRegisterCusttomers)
         {
             InitializeComponent();
-            Car = vehiclesFormForNotRegisterCusttomers.GetSelectedCar();
+            Car = vehiclesFormForNotRegisterCusttomers.getSelectedCar();
+            Store = vehiclesFormForNotRegisterCusttomers.getStore();
 
             labelBrandName.Text = Car.Brand;
             labelModelName.Text = Car.Model;
@@ -33,9 +35,28 @@ namespace CarDealer.Forms
 
         }
 
+        internal Store getStore()
+        {
+            return Store;
+        }
+
+        internal Car getCar()
+        {
+            return Car;
+        }
+
         private void CarSpecificationForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonPurchase_Click(object sender, EventArgs e)
+        {
+            Form purchaseForm = new PurchaseForm(this);
+
+            purchaseForm.Show();
+
+            this.Hide();
         }
     }
 }

@@ -8,20 +8,22 @@ namespace CarDealer.Models
 {
     class Bill
     {
-        private Store Store { get; set; }
-        private Customer Customer { get; set; }
-        private Employee Employee { get; set; }
-        private DateTime Date { get; set; }
-        private List<Car> Cars { get; set; }
-        private int Rebate { get; set; }
+        public int Id { get; set; }
+        public Store Store { get; set; }
+        public Customer Customer { get; set; }
+        public Employee Employee { get; set; }
+        public DateTime Date { get; set; }
+        public Car Car { get; set; }
+        public int Rebate { get; set; }
 
-        public Bill(Store store, Customer customer, Employee employee, DateTime date, List<Car> cars, int rebate)
+        public Bill(int id, Store store, Customer customer, Employee employee, DateTime date, Car car, int rebate)
         {
+            Id = id;
             Store = store;
             Customer = customer;
             Employee = employee;
             Date = date;
-            Cars = cars;
+            Car = car;
             Rebate = rebate;
         }
     }

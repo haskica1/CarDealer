@@ -14,11 +14,13 @@ namespace CarDealer.Models
 
     class Order
     {
-        private Bill Bill { get; set; }
-        private TypeOfDelivery Type { get; set; }
+        public int Id { get; set; }
+        public Bill Bill { get; set; }
+        public TypeOfDelivery Type { get; set; }
 
-        public Order(Bill bill, TypeOfDelivery type)
+        public Order(int id, Bill bill, TypeOfDelivery type)
         {
+            Id = id;
             Bill = bill;
             Type = type;
         }

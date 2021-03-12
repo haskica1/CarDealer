@@ -34,16 +34,16 @@ namespace CarDealer.Forms
             this.radioButtonStore = new System.Windows.Forms.RadioButton();
             this.radioButtonDelivery = new System.Windows.Forms.RadioButton();
             this.groupBoxUser = new System.Windows.Forms.GroupBox();
-            this.labelFirstName = new System.Windows.Forms.Label();
-            this.labelLastName = new System.Windows.Forms.Label();
-            this.labelAddress = new System.Windows.Forms.Label();
-            this.labelPhoneNumber = new System.Windows.Forms.Label();
-            this.labelEmail = new System.Windows.Forms.Label();
-            this.textBoxFirstName = new System.Windows.Forms.TextBox();
-            this.textBoxLastName = new System.Windows.Forms.TextBox();
-            this.textBoxAddress = new System.Windows.Forms.TextBox();
-            this.textBoxPhoneNumber = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.textBoxPhoneNumber = new System.Windows.Forms.TextBox();
+            this.textBoxAddress = new System.Windows.Forms.TextBox();
+            this.textBoxLastName = new System.Windows.Forms.TextBox();
+            this.textBoxFirstName = new System.Windows.Forms.TextBox();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.labelPhoneNumber = new System.Windows.Forms.Label();
+            this.labelAddress = new System.Windows.Forms.Label();
+            this.labelLastName = new System.Windows.Forms.Label();
+            this.labelFirstName = new System.Windows.Forms.Label();
             this.labelNameOfProduct = new System.Windows.Forms.Label();
             this.buttonBuy = new System.Windows.Forms.Button();
             this.groupBoxUser.SuspendLayout();
@@ -118,41 +118,40 @@ namespace CarDealer.Forms
             this.groupBoxUser.TabStop = false;
             this.groupBoxUser.Text = "User";
             // 
-            // labelFirstName
+            // textBoxEmail
             // 
-            this.labelFirstName.AutoSize = true;
-            this.labelFirstName.Location = new System.Drawing.Point(14, 41);
-            this.labelFirstName.Name = "labelFirstName";
-            this.labelFirstName.Size = new System.Drawing.Size(75, 19);
-            this.labelFirstName.TabIndex = 0;
-            this.labelFirstName.Text = "First name:";
+            this.textBoxEmail.Location = new System.Drawing.Point(137, 169);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(170, 26);
+            this.textBoxEmail.TabIndex = 9;
             // 
-            // labelLastName
+            // textBoxPhoneNumber
             // 
-            this.labelLastName.AutoSize = true;
-            this.labelLastName.Location = new System.Drawing.Point(14, 74);
-            this.labelLastName.Name = "labelLastName";
-            this.labelLastName.Size = new System.Drawing.Size(74, 19);
-            this.labelLastName.TabIndex = 1;
-            this.labelLastName.Text = "Last name:";
+            this.textBoxPhoneNumber.Location = new System.Drawing.Point(137, 136);
+            this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
+            this.textBoxPhoneNumber.Size = new System.Drawing.Size(170, 26);
+            this.textBoxPhoneNumber.TabIndex = 8;
             // 
-            // labelAddress
+            // textBoxAddress
             // 
-            this.labelAddress.AutoSize = true;
-            this.labelAddress.Location = new System.Drawing.Point(14, 106);
-            this.labelAddress.Name = "labelAddress";
-            this.labelAddress.Size = new System.Drawing.Size(63, 19);
-            this.labelAddress.TabIndex = 2;
-            this.labelAddress.Text = "Address:";
+            this.textBoxAddress.Location = new System.Drawing.Point(137, 103);
+            this.textBoxAddress.Name = "textBoxAddress";
+            this.textBoxAddress.Size = new System.Drawing.Size(170, 26);
+            this.textBoxAddress.TabIndex = 7;
             // 
-            // labelPhoneNumber
+            // textBoxLastName
             // 
-            this.labelPhoneNumber.AutoSize = true;
-            this.labelPhoneNumber.Location = new System.Drawing.Point(14, 139);
-            this.labelPhoneNumber.Name = "labelPhoneNumber";
-            this.labelPhoneNumber.Size = new System.Drawing.Size(99, 19);
-            this.labelPhoneNumber.TabIndex = 3;
-            this.labelPhoneNumber.Text = "Phone number:";
+            this.textBoxLastName.Location = new System.Drawing.Point(137, 71);
+            this.textBoxLastName.Name = "textBoxLastName";
+            this.textBoxLastName.Size = new System.Drawing.Size(170, 26);
+            this.textBoxLastName.TabIndex = 6;
+            // 
+            // textBoxFirstName
+            // 
+            this.textBoxFirstName.Location = new System.Drawing.Point(137, 38);
+            this.textBoxFirstName.Name = "textBoxFirstName";
+            this.textBoxFirstName.Size = new System.Drawing.Size(170, 26);
+            this.textBoxFirstName.TabIndex = 5;
             // 
             // labelEmail
             // 
@@ -163,40 +162,41 @@ namespace CarDealer.Forms
             this.labelEmail.TabIndex = 4;
             this.labelEmail.Text = "E-mail:";
             // 
-            // textBoxFirstName
+            // labelPhoneNumber
             // 
-            this.textBoxFirstName.Location = new System.Drawing.Point(137, 38);
-            this.textBoxFirstName.Name = "textBoxFirstName";
-            this.textBoxFirstName.Size = new System.Drawing.Size(170, 26);
-            this.textBoxFirstName.TabIndex = 5;
+            this.labelPhoneNumber.AutoSize = true;
+            this.labelPhoneNumber.Location = new System.Drawing.Point(14, 139);
+            this.labelPhoneNumber.Name = "labelPhoneNumber";
+            this.labelPhoneNumber.Size = new System.Drawing.Size(99, 19);
+            this.labelPhoneNumber.TabIndex = 3;
+            this.labelPhoneNumber.Text = "Phone number:";
             // 
-            // textBoxLastName
+            // labelAddress
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(137, 71);
-            this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(170, 26);
-            this.textBoxLastName.TabIndex = 6;
+            this.labelAddress.AutoSize = true;
+            this.labelAddress.Location = new System.Drawing.Point(14, 106);
+            this.labelAddress.Name = "labelAddress";
+            this.labelAddress.Size = new System.Drawing.Size(63, 19);
+            this.labelAddress.TabIndex = 2;
+            this.labelAddress.Text = "Address:";
             // 
-            // textBoxAddress
+            // labelLastName
             // 
-            this.textBoxAddress.Location = new System.Drawing.Point(137, 103);
-            this.textBoxAddress.Name = "textBoxAddress";
-            this.textBoxAddress.Size = new System.Drawing.Size(170, 26);
-            this.textBoxAddress.TabIndex = 7;
+            this.labelLastName.AutoSize = true;
+            this.labelLastName.Location = new System.Drawing.Point(14, 74);
+            this.labelLastName.Name = "labelLastName";
+            this.labelLastName.Size = new System.Drawing.Size(74, 19);
+            this.labelLastName.TabIndex = 1;
+            this.labelLastName.Text = "Last name:";
             // 
-            // textBoxPhoneNumber
+            // labelFirstName
             // 
-            this.textBoxPhoneNumber.Location = new System.Drawing.Point(137, 136);
-            this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
-            this.textBoxPhoneNumber.Size = new System.Drawing.Size(170, 26);
-            this.textBoxPhoneNumber.TabIndex = 8;
-            // 
-            // textBoxEmail
-            // 
-            this.textBoxEmail.Location = new System.Drawing.Point(137, 169);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(170, 26);
-            this.textBoxEmail.TabIndex = 9;
+            this.labelFirstName.AutoSize = true;
+            this.labelFirstName.Location = new System.Drawing.Point(14, 41);
+            this.labelFirstName.Name = "labelFirstName";
+            this.labelFirstName.Size = new System.Drawing.Size(75, 19);
+            this.labelFirstName.TabIndex = 0;
+            this.labelFirstName.Text = "First name:";
             // 
             // labelNameOfProduct
             // 
@@ -217,6 +217,7 @@ namespace CarDealer.Forms
             this.buttonBuy.TabIndex = 6;
             this.buttonBuy.Text = "Buy";
             this.buttonBuy.UseVisualStyleBackColor = true;
+            this.buttonBuy.Click += new System.EventHandler(this.buttonBuy_Click);
             // 
             // PurchaseForm
             // 
@@ -232,6 +233,7 @@ namespace CarDealer.Forms
             this.Controls.Add(this.labelNameOfOrder);
             this.Name = "PurchaseForm";
             this.Text = "Purchase Car";
+            this.Load += new System.EventHandler(this.PurchaseForm_Load);
             this.groupBoxUser.ResumeLayout(false);
             this.groupBoxUser.PerformLayout();
             this.ResumeLayout(false);
