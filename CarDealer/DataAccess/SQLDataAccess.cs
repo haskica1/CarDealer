@@ -95,11 +95,11 @@ namespace CarDealer.DataAccess
             return rez;
         }
 
-        internal int getUserType(int id)
+        internal int getUserType(User user)
         {
 
             var p = new DynamicParameters();
-            p.Add("@userId", id);
+            p.Add("@userId", user.Id);
 
             int rez = connection.Query<int>("dbo.GetUserType",p,commandType: CommandType.StoredProcedure).ToList().First();
             return rez;

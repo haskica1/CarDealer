@@ -16,6 +16,7 @@ namespace CarDealer.Forms
     {
         SQLDataAccess sql = new SQLDataAccess();
         Car Car { get; set; }
+        User User { get; set; }
         Store Store { get; set; }
         public PurchaseForm(CarSpecificationForm carSpecificationForm)
         {
@@ -23,8 +24,24 @@ namespace CarDealer.Forms
 
             Car = carSpecificationForm.getCar();
             Store = carSpecificationForm.getStore();
+            User = carSpecificationForm.getUser();
 
             labelNameOfProduct.Text = Car.CarName;
+
+            if(User != null)
+            {
+                textBoxFirstName.Text = User.FirstName;
+                textBoxLastName.Text = User.LastName;
+                textBoxAddress.Text = User.Address;
+                textBoxEmail.Text = User.Email;
+                textBoxPhoneNumber.Text = User.PhoneNumber;
+
+                textBoxFirstName.Enabled = false;
+                textBoxLastName.Enabled = false;
+                textBoxAddress.Enabled = false;
+                textBoxEmail.Enabled = false;
+                textBoxPhoneNumber.Enabled = false;
+            }
 
         }
 
@@ -52,10 +69,12 @@ namespace CarDealer.Forms
         private bool ValidateForm()
         {
             //for 0 user type
-            if(textBoxFirstName.Text == "" || textBoxLastName.Text == "" || textBoxAddress.Text == "" || textBoxEmail.Text == "" || textBoxPhoneNumber.Text == "")
+            if((textBoxFirstName.Text == "" || textBoxLastName.Text == "" || textBoxAddress.Text == "" || textBoxEmail.Text == "" || textBoxPhoneNumber.Text == "") && sql.getUserType(User) == 0)
             {
                 MessageBox.Show("Please fill in the fields provided for the user.", "Data doesn't exist!!!");
                 return false;
+            }else if(sql.getUserType(User) == 1){
+                MessageBox.Show("VIP korisnik koji ima popust.");
             }
             return true;
         }

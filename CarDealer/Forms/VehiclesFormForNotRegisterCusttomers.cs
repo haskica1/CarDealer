@@ -52,6 +52,10 @@ namespace CarDealer.Forms
         {
             return SelectedCar;
         }
+        internal User getUser()
+        {
+            return User;
+        }
 
         private void buttonSpecification_Click(object sender, EventArgs e)
         {

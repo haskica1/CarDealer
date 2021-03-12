@@ -15,6 +15,7 @@ namespace CarDealer.Forms
     public partial class CarSpecificationForm : Form
     {
         Car Car { get; set; }
+        User User { get; set; }
         Store Store { get; set; }
         SQLDataAccess sql = new SQLDataAccess();
         public CarSpecificationForm(VehiclesFormForNotRegisterCusttomers vehiclesFormForNotRegisterCusttomers)
@@ -22,6 +23,7 @@ namespace CarDealer.Forms
             InitializeComponent();
             Car = vehiclesFormForNotRegisterCusttomers.getSelectedCar();
             Store = vehiclesFormForNotRegisterCusttomers.getStore();
+            User = vehiclesFormForNotRegisterCusttomers.getUser();
 
             labelBrandName.Text = Car.Brand;
             labelModelName.Text = Car.Model;
@@ -43,6 +45,11 @@ namespace CarDealer.Forms
         internal Car getCar()
         {
             return Car;
+        }
+
+        internal User getUser()
+        {
+            return User;
         }
 
         private void CarSpecificationForm_Load(object sender, EventArgs e)
