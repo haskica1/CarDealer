@@ -73,6 +73,58 @@ namespace CarDealer.DataAccess
             return rez;
         }
 
+        internal User searchUser(string firsName, string lastName, string address, string email, string telephoneNumber)
+        {
+            var p = new DynamicParameters();
+            p.Add("@firstName", firsName);
+            p.Add("@lastName", lastName);
+            p.Add("@address", address);
+            p.Add("@email", email);
+            p.Add("@telephoneNumber", telephoneNumber);
+
+            var rez = connection.Query<User>("dbo.searchUser", p, commandType: CommandType.StoredProcedure).ToList().First();
+            return rez;
+        }
+
+        internal Bill AddBill(Store store, User user, DateTime date, Car car, int rabate)
+        {
+            Bill bill = new Bill(0,store, (Customer)user,null,date,car,rabate);
+
+            var p = new DynamicParameters();
+            p.Add("@storeID", store.Id);
+            p.Add("@customerID", user.Id);
+            p.Add("@employeeID", null);
+            p.Add("@date", date);
+            p.Add("@carID", car.Id);
+            p.Add("@rabate", rabate);
+            p.Add("@temp", 0, DbType.Int32, direction: ParameterDirection.Output);
+
+            connection.Execute("dbo.AddBill", p, commandType: CommandType.StoredProcedure);
+
+            bill.Id = p.Get<int>("@temp");
+
+            return bill;
+        }
+
+        internal Order AddOrder(Bill bill, TypeOfDelivery type)
+        {
+            Order order = new Order(0, bill, type);
+            var p = new DynamicParameters();
+            p.Add("@billID", bill.Id);
+            if(type == TypeOfDelivery.STORE)
+                p.Add("@deliveryType", 0);
+            else
+                p.Add("@deliveryType", 1);
+
+            p.Add("@temp", 0, DbType.Int32, direction: ParameterDirection.Output);
+
+            connection.Execute("dbo.AddBill", p, commandType: CommandType.StoredProcedure);
+
+            order.Id = p.Get<int>("@temp");
+
+            return order;
+        }
+
         internal List<User> getAllUsers()
         {
 

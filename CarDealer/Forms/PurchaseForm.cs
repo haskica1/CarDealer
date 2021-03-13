@@ -18,6 +18,8 @@ namespace CarDealer.Forms
         Car Car { get; set; }
         User User { get; set; }
         Store Store { get; set; }
+        Order Order { get; set; }
+        Bill Bill { get; set; }
         public PurchaseForm(CarSpecificationForm carSpecificationForm)
         {
             InitializeComponent();
@@ -59,11 +61,39 @@ namespace CarDealer.Forms
                 //poslati email
             }
 
+
+            CheckUser(User);
+
             textBoxFirstName.Text = "";
             textBoxLastName.Text = "";
             textBoxAddress.Text = "";
             textBoxEmail.Text = "";
             textBoxPhoneNumber.Text = "";
+        }
+
+        private void CheckUser(User user)
+        {
+            int rabate = 0;
+            if(user == null)
+            {
+                user = sql.searchUser(textBoxFirstName.Text, textBoxLastName.Text, textBoxAddress.Text, textBoxEmail.Text, textBoxPhoneNumber.Text);
+                if (user == null)
+                {
+                    //dodati novog korisnika ali bez username i passworda to neka bude random i njegov tip mora biti 0.
+                }
+            }
+            //todo: vrijednost rabata napraviti ra dati kako treba za sad je 0.
+
+            Bill = sql.AddBill(Store, User, DateTime.Now, Car, rabate);
+            if (radioButtonDelivery.Checked) 
+                Order = sql.AddOrder(Bill,TypeOfDelivery.DELIVERY);
+            else 
+                Order = sql.AddOrder(Bill, TypeOfDelivery.STORE);
+
+            
+
+            //dodavanje u bazu podataka racun.
+
         }
 
         private bool ValidateForm()
