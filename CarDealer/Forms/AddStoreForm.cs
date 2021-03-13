@@ -69,5 +69,27 @@ namespace CarDealer.Forms
             form2.Show();
             this.Hide();
         }
+
+        private void AddStoreForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+
+            const string message = "Are you sure that you would like to close the form?";
+            const string caption = "Form Closing";
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+
+        }
     }
 }

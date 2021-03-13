@@ -123,6 +123,7 @@ namespace CarDealer.Forms
             this.Controls.Add(this.labelName);
             this.Name = "AddStorageForm";
             this.Text = "Add storage";
+            this.Load += new System.EventHandler(this.AddStorageForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

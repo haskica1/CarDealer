@@ -108,5 +108,21 @@ namespace CarDealer.Forms
 
             comboBoxModel.DataSource = models;
         }
+
+        protected override void OnClosing(CancelEventArgs e) {
+
+            const string message = "Are you sure that you would like to close the form?";
+            const string caption = "Form Closing";
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+
+        }
     }
 }

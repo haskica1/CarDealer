@@ -299,6 +299,7 @@ namespace CarDealer.Forms
             this.Controls.Add(this.textBoxName);
             this.Name = "AddStoreForm";
             this.Text = "Add store";
+            this.Load += new System.EventHandler(this.AddStoreForm_Load);
             this.groupBoxStorage.ResumeLayout(false);
             this.groupBoxStorage.PerformLayout();
             this.groupBoxEmployee.ResumeLayout(false);
