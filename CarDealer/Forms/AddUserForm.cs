@@ -28,6 +28,15 @@ namespace CarDealer.Forms
             
         }
 
+        public AddUserForm()
+        {
+            InitializeComponent();
+            textBoxPassword.PasswordChar = '*';
+            types.ForEach(delegate (string data) { comboBoxType.Items.Add(data); });
+            comboBoxType.Visible = true;
+            labelType.Visible = true;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Customer newUser = null;
@@ -52,7 +61,7 @@ namespace CarDealer.Forms
 
             this.Close();
 
-            StartingForm.SetUser(newUser);
+            StartingForm.setUser(newUser);
             StartingForm.Show();
 
 
@@ -63,6 +72,8 @@ namespace CarDealer.Forms
             List<User> users = sql.getAllUsers();
 
             //TODO -  NAPRAVITI ZA SVAKI FIELD NJEGOVO ISPITIVANJE.
+
+            //todo - provjeriti dodavanje korisnika kako pri registraciji tako i pri dodavanju novog.
 
             foreach(User user in users)
             {

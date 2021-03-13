@@ -26,12 +26,16 @@ namespace CarDealer.Forms
         {
             InitializeComponent();
 
-            cars = sql.getAllVehicles();
-            brands = sql.getAllBrands();
-            //models = sql.getAllModels();
-            colors = sql.getAllColors();
             User = startingForm.getUser();
             Store = startingForm.getStore();
+            WireUp();  
+        }
+
+        private void WireUp()
+        {
+            cars = sql.getAllVehicles();
+            brands = sql.getAllBrands();
+            colors = sql.getAllColors();
 
             comboBoxBrand.DataSource = brands;
             comboBoxModel.DataSource = models;

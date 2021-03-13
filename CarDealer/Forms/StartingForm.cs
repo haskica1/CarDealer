@@ -27,7 +27,20 @@ namespace CarDealer.Forms
             comboBoxStore.DisplayMember = "FullStoreName";
         }
 
-  
+        public StartingForm(EmployeeForm employeeForm)
+        {
+            InitializeComponent();
+            stores = sql.getAllStores();
+            User = employeeForm.getUser();
+
+            linkLabelLogIn.Enabled = false;
+            linkLabelRegister.Enabled = false;
+
+            comboBoxStore.DataSource = stores;
+            comboBoxStore.DisplayMember = "FullStoreName";
+        }
+
+
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -68,7 +81,7 @@ namespace CarDealer.Forms
             this.Hide();
         }
 
-        internal void SetUser(User user)
+        internal void setUser(User user)
         {
             User = user;
             labelWelcome.Text = labelWelcome.Text + $"\n{User.FullUserName}";

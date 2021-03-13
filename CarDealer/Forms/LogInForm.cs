@@ -15,8 +15,8 @@ namespace CarDealer.Forms
     public partial class LogInForm : Form
     {
         StartingForm StartingForm { get; set; }
-
         SQLDataAccess sql = new SQLDataAccess();
+        User User { get; set; }
         public LogInForm()
         {
             InitializeComponent();
@@ -42,21 +42,33 @@ namespace CarDealer.Forms
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            User user = sql.getUserByUsernameAndPassword(textBoxUsername.Text, textBoxPassword.Text);
+            User = sql.getUserByUsernameAndPassword(textBoxUsername.Text, textBoxPassword.Text);
 
             //todo - napraviti da bude funkcionalno
             /*if (user != null) MessageBox.Show("USPJESNO");
             else MessageBox.Show("GRESKA");*/
-            int userType = sql.getUserType(user);
+            int userType = sql.getUserType(User);
             
             if(userType == 0 || userType == 1)
             {
                 this.Close();
-                StartingForm.SetUser(user);
+                StartingForm.setUser(User);
 
                 StartingForm.Show();
 
+            }else if(userType == 2 || userType == 3 || userType == 4)
+            {
+                Form form = new EmployeeForm(this);
+
+                form.Show();
+
+                this.Hide();
             }
+        }
+
+        internal User getUser()
+        {
+            return User;
         }
     }
 }
