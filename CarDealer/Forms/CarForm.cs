@@ -109,15 +109,25 @@ namespace CarDealer.Forms
                 equipment = (Equipment)comboBoxEquipment.SelectedItem;
             }
 
-
-            equipments.Add(equipment);
-            listBoxEquipment.Items.Add(equipment);
+            if (ValidateEquipment(equipment)) { 
+                equipments.Add(equipment);
+                listBoxEquipment.Items.Add(equipment);
+            }
 
             textBoxNameOfEquipment.Text = "";
             richTextBoxInfoOfEquipment.Text = "";
 
 
             WireUpLists();
+        }
+
+        private bool ValidateEquipment(Equipment equipment)
+        {
+            foreach (Equipment e in equipments)
+            {
+                if (e.Name.Equals(equipment.Name)) return false;
+            }
+            return true;
         }
 
         private bool ValidateField(string equipmentName)
@@ -133,6 +143,11 @@ namespace CarDealer.Forms
         {
             equipments.Remove((Equipment)listBoxEquipment.SelectedItem);
             listBoxEquipment.Items.Remove((Equipment)listBoxEquipment.SelectedItem);
+        }
+
+        private void CarForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

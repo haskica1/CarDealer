@@ -323,6 +323,7 @@ namespace CarDealer.Forms
             this.Controls.Add(this.textBoxBrand);
             this.Name = "CarForm";
             this.Text = "CarForm";
+            this.Load += new System.EventHandler(this.CarForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
