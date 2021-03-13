@@ -61,6 +61,51 @@ namespace CarDealer.DataAccess
             return rez;
         }
 
+        internal User updateUser(string firstName, string lastName, string address, string email, string telephoneNumber, string username, string password, string type)
+        {
+            User user = searchUser(firstName, lastName, address, email, telephoneNumber);
+
+            var p = new DynamicParameters();
+            p.Add("@firstName", firstName);
+            p.Add("@lastName", lastName);
+            p.Add("@phoneNumber", telephoneNumber);
+            p.Add("@address", address);
+            p.Add("@username", username);
+            p.Add("@password", password);
+            p.Add("@email", email);
+
+            if(type.Equals("ADMINISTRATION"))
+                p.Add("@type", 2);
+            else if(type.Equals("SALESMAN"))
+                p.Add("@type", 3);
+            else if(type.Equals("DIRECTOR"))
+                p.Add("@type", 4);
+            else if(type.Equals("REGULAR"))
+                p.Add("@type", 0);
+            else p.Add("@type", 1);
+
+            p.Add("@userId", user.Id);
+
+            connection.Execute("dbo.UpdateUser", p, commandType: CommandType.StoredProcedure);
+
+            return searchUser(firstName, lastName, address, email, telephoneNumber);
+        }
+
+        internal void deleteCar(Car car)
+        {
+            var p = new DynamicParameters();
+            p.Add("@carId", car.Id);
+
+            connection.Execute("dbo.DeleteCar", p, commandType: CommandType.StoredProcedure);
+        }
+
+        internal bool isThereUser(string firstName, string lastName, string email, string address, string telephoneNumber)
+        {
+            var rez = searchUser(firstName, lastName, address, email, telephoneNumber);
+            if (rez == null) return false;
+            return true;
+        }
+
         internal List<Employee> getAllEmployees()
         {
             var rez = connection.Query<Employee>("dbo.GetAllEmployees").ToList();
@@ -73,22 +118,23 @@ namespace CarDealer.DataAccess
             return rez;
         }
 
-        internal User searchUser(string firsName, string lastName, string address, string email, string telephoneNumber)
+        internal User searchUser(string firstName, string lastName, string address, string email, string telephoneNumber)
         {
             var p = new DynamicParameters();
-            p.Add("@firstName", firsName);
+            p.Add("@firstName", firstName);
             p.Add("@lastName", lastName);
             p.Add("@address", address);
             p.Add("@email", email);
             p.Add("@telephoneNumber", telephoneNumber);
 
-            var rez = connection.Query<User>("dbo.searchUser", p, commandType: CommandType.StoredProcedure).ToList().First();
-            return rez;
+            var rez = connection.Query<User>("dbo.searchUser", p, commandType: CommandType.StoredProcedure).ToList();
+            if (rez.Count != 0) return rez.First();
+            return null;
         }
 
         internal Bill AddBill(Store store, User user, DateTime date, Car car, int rabate)
         {
-            Bill bill = new Bill(0,store, (Customer)user,null,date,car,rabate);
+            Bill bill = new Bill(0,store, user,null,date,car,rabate);
 
             var p = new DynamicParameters();
             p.Add("@storeID", store.Id);
@@ -118,7 +164,7 @@ namespace CarDealer.DataAccess
 
             p.Add("@temp", 0, DbType.Int32, direction: ParameterDirection.Output);
 
-            connection.Execute("dbo.AddBill", p, commandType: CommandType.StoredProcedure);
+            connection.Execute("dbo.AddOrder", p, commandType: CommandType.StoredProcedure);
 
             order.Id = p.Get<int>("@temp");
 

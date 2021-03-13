@@ -44,9 +44,6 @@ namespace CarDealer.Forms
         {
             User = sql.getUserByUsernameAndPassword(textBoxUsername.Text, textBoxPassword.Text);
 
-            //todo - napraviti da bude funkcionalno
-            /*if (user != null) MessageBox.Show("USPJESNO");
-            else MessageBox.Show("GRESKA");*/
             int userType = sql.getUserType(User);
             
             if(userType == 0 || userType == 1)

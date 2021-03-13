@@ -63,7 +63,13 @@ namespace CarDealer.Forms
             }
 
 
-            CheckUser(User);
+            User = CheckUser(User);
+            if (User.GetType == 0)
+                rabate = 0;
+            else if (User.GetType == 1)
+                rabate = 10;
+            else
+                rabate = 20;
 
             Bill = sql.AddBill(Store, User, DateTime.Now, Car, rabate);
             if (radioButtonDelivery.Checked)
@@ -76,25 +82,28 @@ namespace CarDealer.Forms
             textBoxAddress.Text = "";
             textBoxEmail.Text = "";
             textBoxPhoneNumber.Text = "";
+
+            sql.deleteCar(Car);
         }
 
-        private void CheckUser(User user)
+        private User CheckUser(User user)
         {
-            
+            //ako si usao odmah bez da si se prijavio
             if(user == null)
             {
+                //trazis u bazi jel ima upisani neki korisnik sa tim podacima
                 user = sql.searchUser(textBoxFirstName.Text, textBoxLastName.Text, textBoxAddress.Text, textBoxEmail.Text, textBoxPhoneNumber.Text);
                 if (user == null)
                 {
-                    //dodati novog korisnika ali bez username i passworda to neka bude random i njegov tip mora biti 0.
+                    //ako nema, dodati novog korisnika ali bez username i passworda to neka bude random i njegov tip mora biti 0.
+                    string randomUsername = textBoxFirstName.Text + textBoxLastName.Text + textBoxAddress.Text + textBoxEmail.Text + textBoxPhoneNumber.Text;
+                    string randomPassword = randomUsername;
+
+                    user = new Customer(0, textBoxFirstName.Text, textBoxLastName.Text, textBoxPhoneNumber.Text, textBoxAddress.Text, randomUsername, randomPassword, textBoxEmail.Text, CustomersType.REGULAR);
+                    sql.AddUser(user);
                 }
             }
-            //todo: vrijednost rabata napraviti ra dati kako treba za sad je 0.
-
-            
-
-            //dodavanje u bazu podataka racun.
-
+            return user;
         }
 
         private bool ValidateForm()
@@ -104,8 +113,6 @@ namespace CarDealer.Forms
             {
                 MessageBox.Show("Please fill in the fields provided for the user.", "Data doesn't exist!!!");
                 return false;
-            }else if(sql.getUserType(User) == 1){
-                MessageBox.Show("VIP korisnik koji ima popust.");
             }
             return true;
         }

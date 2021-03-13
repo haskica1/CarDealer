@@ -48,6 +48,9 @@ namespace CarDealer.Forms
             if(!ValidateFields(textBoxUsername.Text, textBoxEmail.Text, textBoxPhoneNumber.Text))
             {
                 MessageBox.Show("Wrong data!!! \nPlease try again.", "Wrong data!!!");
+            }else if (sql.isThereUser(textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, textBoxAddress.Text, textBoxPhoneNumber.Text))
+            {
+                newUser = sql.updateUser(textBoxFirstName.Text, textBoxLastName.Text, textBoxEmail.Text, textBoxAddress.Text, textBoxPhoneNumber.Text, textBoxUsername.Text, textBoxPassword.Text, comboBoxType.Text);
             }
             else
             {
@@ -96,11 +99,9 @@ namespace CarDealer.Forms
         {
             List<User> users = sql.getAllUsers();
 
-            //TODO -  NAPRAVITI ZA SVAKI FIELD NJEGOVO ISPITIVANJE.
-
             foreach(User user in users)
             {
-                if (user.Username.Equals(username) || user.Email.Equals(email) || user.PhoneNumber.Equals(telephoneNumber)) return false;
+                if ((user.Username.Equals(username) || user.Email.Equals(email) || user.PhoneNumber.Equals(telephoneNumber)) && user.GetType != 0) return false;
             }
             return true;
         }
