@@ -48,7 +48,7 @@ namespace CarDealer.Forms
 
         private void buttonAddUser_Click(object sender, EventArgs e)
         {
-            Form form = new AddUserForm();
+            Form form = new AddUserForm(this);
             form.Show();
 
             this.Hide();

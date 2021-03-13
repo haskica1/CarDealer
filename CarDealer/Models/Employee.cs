@@ -28,6 +28,14 @@ namespace CarDealer.Models
         {
             //Type = employeeType;
         }
-
+        public override int GetType
+        {
+            get
+            {
+                if (Type == EmployeeType.ADMINISTRATION) return 2;
+                else if (Type == EmployeeType.SALESMAN) return 3;
+                return 4;
+            }
+        }
     }
 }

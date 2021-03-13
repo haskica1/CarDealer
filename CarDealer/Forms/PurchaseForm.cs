@@ -54,6 +54,7 @@ namespace CarDealer.Forms
 
         private void buttonBuy_Click(object sender, EventArgs e)
         {
+            int rabate = 0;
             if (ValidateForm())
             {
                 MessageBox.Show("uspjesno");
@@ -64,6 +65,12 @@ namespace CarDealer.Forms
 
             CheckUser(User);
 
+            Bill = sql.AddBill(Store, User, DateTime.Now, Car, rabate);
+            if (radioButtonDelivery.Checked)
+                Order = sql.AddOrder(Bill, TypeOfDelivery.DELIVERY);
+            else
+                Order = sql.AddOrder(Bill, TypeOfDelivery.STORE);
+
             textBoxFirstName.Text = "";
             textBoxLastName.Text = "";
             textBoxAddress.Text = "";
@@ -73,7 +80,7 @@ namespace CarDealer.Forms
 
         private void CheckUser(User user)
         {
-            int rabate = 0;
+            
             if(user == null)
             {
                 user = sql.searchUser(textBoxFirstName.Text, textBoxLastName.Text, textBoxAddress.Text, textBoxEmail.Text, textBoxPhoneNumber.Text);
@@ -83,12 +90,6 @@ namespace CarDealer.Forms
                 }
             }
             //todo: vrijednost rabata napraviti ra dati kako treba za sad je 0.
-
-            Bill = sql.AddBill(Store, User, DateTime.Now, Car, rabate);
-            if (radioButtonDelivery.Checked) 
-                Order = sql.AddOrder(Bill,TypeOfDelivery.DELIVERY);
-            else 
-                Order = sql.AddOrder(Bill, TypeOfDelivery.STORE);
 
             
 

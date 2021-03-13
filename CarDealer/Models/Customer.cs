@@ -20,6 +20,14 @@ namespace CarDealer.Models
             Type = customersType;
         }
 
+        public override int GetType
+        {
+            get
+            {
+                if (Type == CustomersType.REGULAR) return 0;
+                return 1;
+            }
+        }
 
     }
 }

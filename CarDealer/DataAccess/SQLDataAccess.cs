@@ -206,7 +206,7 @@ namespace CarDealer.DataAccess
             
         }
 
-        internal void AddUser(Customer newUser)
+        internal void AddUser(User newUser)
         {
             var p = new DynamicParameters();
             p.Add("@firstName", newUser.FirstName);
@@ -216,7 +216,7 @@ namespace CarDealer.DataAccess
             p.Add("@username", newUser.Username);
             p.Add("@password", newUser.Password);
             p.Add("@email", newUser.Email);
-            p.Add("@type", 0);
+            p.Add("@type", newUser.GetType);
             p.Add("@temp", 0, DbType.Int32, direction: ParameterDirection.Output);
 
             connection.Execute("dbo.AddUser", p, commandType: CommandType.StoredProcedure);

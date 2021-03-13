@@ -15,41 +15,62 @@ namespace CarDealer.Forms
     public partial class AddUserForm : Form
     {
         SQLDataAccess sql = new SQLDataAccess();
-        List<string> types = new List<string> {"VIP","REGULAR","SALESMAN", "ADMINISTRATION" };
+        List<string> types = new List<string> {"VIP","REGULAR","SALESMAN", "ADMINISTRATION", "DIRECTOR" };
         StartingForm StartingForm { get; set; }
+        EmployeeForm EmployeeForm { get; set; }
         public AddUserForm(StartingForm startingForm)
         {
             InitializeComponent();
 
             StartingForm = startingForm;
-
-            textBoxPassword.PasswordChar = '*';
-            types.ForEach(delegate (string data) { comboBoxType.Items.Add(data); } );
-            
+            WireUp();
         }
 
-        public AddUserForm()
+        public AddUserForm(EmployeeForm employeeForm)
         {
             InitializeComponent();
-            textBoxPassword.PasswordChar = '*';
-            types.ForEach(delegate (string data) { comboBoxType.Items.Add(data); });
+
+            EmployeeForm = employeeForm;
+
             comboBoxType.Visible = true;
             labelType.Visible = true;
+            WireUp();
+        }
+        private void WireUp()
+        {
+            textBoxPassword.PasswordChar = '*';
+            types.ForEach(delegate (string data) { comboBoxType.Items.Add(data); });
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Customer newUser = null;
+            User newUser = null;
             if(!ValidateFields(textBoxUsername.Text, textBoxEmail.Text, textBoxPhoneNumber.Text))
             {
                 MessageBox.Show("Wrong data!!! \nPlease try again.", "Wrong data!!!");
             }
             else
             {
-                newUser = new Customer(0, textBoxFirstName.Text, textBoxLastName.Text, textBoxPhoneNumber.Text, textBoxAddress.Text, textBoxUsername.Text, textBoxPassword.Text, textBoxEmail.Text,CustomersType.REGULAR);
+                switch (comboBoxType.Text)
+                {
+                    case "ADMINISTRATION":
+                        newUser = new Employee(0, textBoxFirstName.Text, textBoxLastName.Text, textBoxPhoneNumber.Text, textBoxAddress.Text, textBoxUsername.Text, textBoxPassword.Text, textBoxEmail.Text, EmployeeType.ADMINISTRATION);
+                        break;
+                    case "VIP":
+                        newUser = new Customer(0, textBoxFirstName.Text, textBoxLastName.Text, textBoxPhoneNumber.Text, textBoxAddress.Text, textBoxUsername.Text, textBoxPassword.Text, textBoxEmail.Text, CustomersType.VIP);
+                        break;
+                    case "SALESMAN":
+                        newUser = new Employee(0, textBoxFirstName.Text, textBoxLastName.Text, textBoxPhoneNumber.Text, textBoxAddress.Text, textBoxUsername.Text, textBoxPassword.Text, textBoxEmail.Text, EmployeeType.SALESMAN);
+                        break;
+                    case "DIRECTOR":
+                        newUser = new Employee(0, textBoxFirstName.Text, textBoxLastName.Text, textBoxPhoneNumber.Text, textBoxAddress.Text, textBoxUsername.Text, textBoxPassword.Text, textBoxEmail.Text, EmployeeType.DIRECTOR);
+                        break;
+                    default:
+                        newUser = new Customer(0, textBoxFirstName.Text, textBoxLastName.Text, textBoxPhoneNumber.Text, textBoxAddress.Text, textBoxUsername.Text, textBoxPassword.Text, textBoxEmail.Text, CustomersType.REGULAR);
+                        break;
+                }
                 sql.AddUser(newUser);
             }
-
 
             textBoxFirstName.Text = "";
             textBoxLastName.Text = "";
@@ -61,9 +82,13 @@ namespace CarDealer.Forms
 
             this.Close();
 
-            StartingForm.setUser(newUser);
-            StartingForm.Show();
-
+            if (StartingForm != null)
+            {
+                StartingForm.setUser(newUser);
+                StartingForm.Show();
+            }
+            else
+                EmployeeForm.Show();
 
         }
 
@@ -72,8 +97,6 @@ namespace CarDealer.Forms
             List<User> users = sql.getAllUsers();
 
             //TODO -  NAPRAVITI ZA SVAKI FIELD NJEGOVO ISPITIVANJE.
-
-            //todo - provjeriti dodavanje korisnika kako pri registraciji tako i pri dodavanju novog.
 
             foreach(User user in users)
             {
