@@ -79,7 +79,7 @@ namespace CarDealer.Forms
             this.buttonAddStore.Name = "buttonAddStore";
             this.buttonAddStore.Size = new System.Drawing.Size(200, 50);
             this.buttonAddStore.TabIndex = 3;
-            this.buttonAddStore.Text = "Add Store";
+            this.buttonAddStore.Text = "Add store";
             this.buttonAddStore.UseVisualStyleBackColor = true;
             this.buttonAddStore.Click += new System.EventHandler(this.button1_Click);
             // 

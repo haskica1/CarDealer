@@ -91,6 +91,17 @@ namespace CarDealer.DataAccess
             return searchUser(firstName, lastName, address, email, telephoneNumber);
         }
 
+        internal void addStorage(string name, string address, User user)
+        {
+            var p = new DynamicParameters();
+            p.Add("@storageName", name);
+            p.Add("@storageAddress", address);
+            p.Add("@managerID", user.Id);
+            p.Add("@temp", 0);
+
+            connection.Execute("dbo.AddStorage", p, commandType: CommandType.StoredProcedure);
+        }
+
         internal void AddStore(string name, string address, List<Employee> employees, List<Storage> storages)
         {
             Store store = new Store(0, name, address);

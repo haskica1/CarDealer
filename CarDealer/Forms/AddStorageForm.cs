@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CarDealer.DataAccess;
+using CarDealer.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +15,8 @@ namespace CarDealer.Forms
     public partial class AddStorageForm : Form
     {
         AddStoreForm AddStoreForm { get; set; }
-
+        User User { get; set; }
+        SQLDataAccess sql = new SQLDataAccess();
         public AddStorageForm()
         {
             InitializeComponent();
@@ -50,6 +53,34 @@ namespace CarDealer.Forms
                 e.Cancel = true;
             }
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form form = new AddUserForm(this);
+
+            form.Show();
+            this.Hide();
+        }
+
+        internal void setUser(User newUser)
+        {
+            User = newUser;
+        }
+
+        private void buttonAddStorage_Click(object sender, EventArgs e)
+        {
+            if (User == null)
+            {
+                MessageBox.Show("Need to add manager of storage!!!", "Error");
+                return;
+            }
+
+            sql.addStorage(textBoxName.Text,textBoxAddress.Text,User);
+            this.Hide();
+
+            AddStoreForm.Show();
+            AddStoreForm.WireUp();
         }
     }
 }

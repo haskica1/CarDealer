@@ -19,12 +19,26 @@ namespace CarDealer.Forms
         StartingForm StartingForm { get; set; }
         EmployeeForm EmployeeForm { get; set; }
         AddStoreForm AddStoreForm { get; set; }
+        AddStorageForm AddStorageForm { get; set; }
 
         public AddUserForm(StartingForm startingForm)
         {
             InitializeComponent();
 
             StartingForm = startingForm;
+
+            WireUp();
+        }
+
+        public AddUserForm(AddStorageForm addStorageForm)
+        {
+            InitializeComponent();
+
+            AddStorageForm = addStorageForm;
+            types.Remove("VIP");
+            types.Remove("REGULAR");
+            comboBoxType.Visible = true;
+            labelType.Visible = true;
             WireUp();
         }
 
@@ -106,10 +120,14 @@ namespace CarDealer.Forms
             }
             else if (EmployeeForm != null)
                 EmployeeForm.Show();
-            else
+            else if(AddStoreForm != null)
             {
                 AddStoreForm.Show();
                 AddStoreForm.WireUp();
+            }else
+            {
+                AddStorageForm.Show();
+                AddStorageForm.setUser(newUser);
             }
 
         }

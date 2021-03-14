@@ -72,6 +72,7 @@ namespace CarDealer.Forms
             this.linkLabel1.TabIndex = 2;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Click to add manager!!!";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // textBoxName
             // 
@@ -97,6 +98,7 @@ namespace CarDealer.Forms
             this.buttonAddStorage.TabIndex = 5;
             this.buttonAddStorage.Text = "ADD STORAGE";
             this.buttonAddStorage.UseVisualStyleBackColor = true;
+            this.buttonAddStorage.Click += new System.EventHandler(this.buttonAddStorage_Click);
             // 
             // label1
             // 

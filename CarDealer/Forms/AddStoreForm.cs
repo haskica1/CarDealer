@@ -20,7 +20,6 @@ namespace CarDealer.Forms
         List<Storage> allStorages;
         List<Employee> employees = new List<Employee>();
         List<Storage> storages = new List<Storage>();
-        //todo - ne radi dodavanje skladista odnosno forma ne radi kako treba
         public AddStoreForm()
         {
             InitializeComponent();
