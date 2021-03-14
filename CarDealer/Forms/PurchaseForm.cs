@@ -10,6 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+using System.Web;
+using System.Net.Mail;
+using System.Net;
+
 namespace CarDealer.Forms
 {
     public partial class PurchaseForm : Form
@@ -22,7 +27,8 @@ namespace CarDealer.Forms
         Bill Bill { get; set; }
         CarSpecificationForm CarSpecificationForm { get; set; }
         private bool logIn = true;
-
+        private string companyEmailAddress = "";
+        private string companyEmailPassword = "";
         internal User getUser()
         {
             return User;
@@ -92,6 +98,9 @@ namespace CarDealer.Forms
             textBoxEmail.Text = "";
             textBoxPhoneNumber.Text = "";
 
+            //sendEmail(User, Car);
+
+
             sql.deleteCar(Car);
             this.Hide();
 
@@ -105,6 +114,34 @@ namespace CarDealer.Forms
                 form.Show();
             }
             
+        }
+
+        private void sendEmail(User user, Car car)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.To.Add(companyEmailAddress);
+                mail.To.Add(User.Email);
+                mail.From = new MailAddress(companyEmailAddress);
+                mail.Subject = "Purchase car";
+                string Body = "Congratulations on purchase " + car.CarName;
+                mail.IsBodyHtml = true;
+
+                SmtpClient smtp = new SmtpClient("localhost", 25);
+                smtp.Host = "smtp.gmail.com"; //Or Your SMTP Server Address
+                smtp.Credentials = new System.Net.NetworkCredential
+                     (companyEmailAddress, companyEmailPassword);
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+                MessageBox.Show("Mail Send");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private User CheckUser(User user)
