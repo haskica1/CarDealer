@@ -15,6 +15,7 @@ namespace CarDealer.Forms
     public partial class AddStorageForm : Form
     {
         AddStoreForm AddStoreForm { get; set; }
+        EmployeeForm EmployeeForm { get; set; }
         User User { get; set; }
         SQLDataAccess sql = new SQLDataAccess();
         public AddStorageForm()
@@ -26,6 +27,12 @@ namespace CarDealer.Forms
         {
             InitializeComponent();
             AddStoreForm = addStoreForm;
+        }
+
+        public AddStorageForm(EmployeeForm employeeForm)
+        {
+            InitializeComponent();
+            EmployeeForm = employeeForm;
         }
 
         private void labelLastName_Click(object sender, EventArgs e)
@@ -78,9 +85,15 @@ namespace CarDealer.Forms
 
             sql.addStorage(textBoxName.Text,textBoxAddress.Text,User);
             this.Hide();
-
-            AddStoreForm.Show();
-            AddStoreForm.WireUp();
+            if (AddStoreForm != null)
+            {
+                AddStoreForm.Show();
+                AddStoreForm.WireUp();
+            }
+            else
+            {
+                EmployeeForm.Show();
+            }
         }
     }
 }

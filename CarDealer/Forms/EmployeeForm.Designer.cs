@@ -33,6 +33,7 @@ namespace CarDealer.Forms
             this.buttonAddUser = new System.Windows.Forms.Button();
             this.buttonAddCar = new System.Windows.Forms.Button();
             this.buttonAddStore = new System.Windows.Forms.Button();
+            this.buttonAddStorage = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonPurchaseCar
@@ -83,11 +84,24 @@ namespace CarDealer.Forms
             this.buttonAddStore.UseVisualStyleBackColor = true;
             this.buttonAddStore.Click += new System.EventHandler(this.button1_Click);
             // 
+            // buttonAddStorage
+            // 
+            this.buttonAddStorage.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddStorage.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonAddStorage.Location = new System.Drawing.Point(286, 352);
+            this.buttonAddStorage.Name = "buttonAddStorage";
+            this.buttonAddStorage.Size = new System.Drawing.Size(200, 50);
+            this.buttonAddStorage.TabIndex = 4;
+            this.buttonAddStorage.Text = "Add storage";
+            this.buttonAddStorage.UseVisualStyleBackColor = true;
+            this.buttonAddStorage.Click += new System.EventHandler(this.buttonAddStorage_Click);
+            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonAddStorage);
             this.Controls.Add(this.buttonAddStore);
             this.Controls.Add(this.buttonAddCar);
             this.Controls.Add(this.buttonAddUser);
@@ -105,5 +119,6 @@ namespace CarDealer.Forms
         private System.Windows.Forms.Button buttonAddUser;
         private System.Windows.Forms.Button buttonAddCar;
         private System.Windows.Forms.Button buttonAddStore;
+        private System.Windows.Forms.Button buttonAddStorage;
     }
 }

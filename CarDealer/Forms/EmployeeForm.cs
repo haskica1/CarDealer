@@ -86,5 +86,13 @@ namespace CarDealer.Forms
 
             this.Hide();
         }
+
+        private void buttonAddStorage_Click(object sender, EventArgs e)
+        {
+            Form form = new AddStorageForm(this);
+            form.Show();
+
+            this.Hide();
+        }
     }
 }
