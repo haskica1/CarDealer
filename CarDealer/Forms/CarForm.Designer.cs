@@ -54,6 +54,8 @@ namespace CarDealer.Forms
             this.buttonAddCar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.listBoxEquipment = new System.Windows.Forms.ListBox();
+            this.labelStorage = new System.Windows.Forms.Label();
+            this.comboBoxStorage = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -178,7 +180,7 @@ namespace CarDealer.Forms
             this.groupBox1.Controls.Add(this.comboBoxEquipment);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.groupBox1.Location = new System.Drawing.Point(39, 268);
+            this.groupBox1.Location = new System.Drawing.Point(39, 281);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(265, 279);
             this.groupBox1.TabIndex = 13;
@@ -271,7 +273,7 @@ namespace CarDealer.Forms
             // 
             this.buttonAddCar.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddCar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.buttonAddCar.Location = new System.Drawing.Point(368, 506);
+            this.buttonAddCar.Location = new System.Drawing.Point(368, 519);
             this.buttonAddCar.Name = "buttonAddCar";
             this.buttonAddCar.Size = new System.Drawing.Size(409, 41);
             this.buttonAddCar.TabIndex = 16;
@@ -298,12 +300,33 @@ namespace CarDealer.Forms
             this.listBoxEquipment.Size = new System.Drawing.Size(328, 420);
             this.listBoxEquipment.TabIndex = 18;
             // 
+            // labelStorage
+            // 
+            this.labelStorage.AutoSize = true;
+            this.labelStorage.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStorage.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.labelStorage.Location = new System.Drawing.Point(35, 243);
+            this.labelStorage.Name = "labelStorage";
+            this.labelStorage.Size = new System.Drawing.Size(59, 19);
+            this.labelStorage.TabIndex = 19;
+            this.labelStorage.Text = "Storage:";
+            // 
+            // comboBoxStorage
+            // 
+            this.comboBoxStorage.FormattingEnabled = true;
+            this.comboBoxStorage.Location = new System.Drawing.Point(103, 240);
+            this.comboBoxStorage.Name = "comboBoxStorage";
+            this.comboBoxStorage.Size = new System.Drawing.Size(201, 21);
+            this.comboBoxStorage.TabIndex = 20;
+            // 
             // CarForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 592);
+            this.Controls.Add(this.comboBoxStorage);
+            this.Controls.Add(this.labelStorage);
             this.Controls.Add(this.listBoxEquipment);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonAddCar);
@@ -357,5 +380,7 @@ namespace CarDealer.Forms
         private System.Windows.Forms.Button buttonAddCar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBoxEquipment;
+        private System.Windows.Forms.Label labelStorage;
+        private System.Windows.Forms.ComboBox comboBoxStorage;
     }
 }

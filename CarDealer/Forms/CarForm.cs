@@ -18,14 +18,14 @@ namespace CarDealer.Forms
         private SQLDataAccess sql = new SQLDataAccess();
         private List<Equipment> equipments = new List<Equipment>();
         private List<Equipment> allEquipments = new List<Equipment>();
-
+        private List<Storage> storages = new List<Storage>();
 
         public CarForm()
         {
             InitializeComponent();
 
             allEquipments = sql.GetAllEquipments();
-
+            storages = sql.getAllStorages();
             WireUpLists();
         }
 
@@ -72,7 +72,7 @@ namespace CarDealer.Forms
         {
             Car car = new Car(0,textBoxBrand.Text, textBoxModel.Text, textBoxColor.Text, textBoxEngine.Text, textBoxChassis.Text, Double.Parse(textBoxPrice.Text));
             sql.AddCar(car, equipments);
-
+            sql.AddCarToStorage(car, (Storage)comboBoxStorage.SelectedItem);
 
             textBoxChassis.Text = "";
             textBoxBrand.Text = "";

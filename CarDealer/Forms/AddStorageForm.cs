@@ -12,9 +12,17 @@ namespace CarDealer.Forms
 {
     public partial class AddStorageForm : Form
     {
+        AddStoreForm AddStoreForm { get; set; }
+
         public AddStorageForm()
         {
             InitializeComponent();
+        }
+
+        public AddStorageForm(AddStoreForm addStoreForm)
+        {
+            InitializeComponent();
+            AddStoreForm = addStoreForm;
         }
 
         private void labelLastName_Click(object sender, EventArgs e)

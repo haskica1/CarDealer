@@ -32,6 +32,7 @@ namespace CarDealer.Forms
             this.buttonPurchaseCar = new System.Windows.Forms.Button();
             this.buttonAddUser = new System.Windows.Forms.Button();
             this.buttonAddCar = new System.Windows.Forms.Button();
+            this.buttonAddStore = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonPurchaseCar
@@ -70,11 +71,24 @@ namespace CarDealer.Forms
             this.buttonAddCar.UseVisualStyleBackColor = true;
             this.buttonAddCar.Click += new System.EventHandler(this.buttonAddCar_Click);
             // 
+            // buttonAddStore
+            // 
+            this.buttonAddStore.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddStore.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonAddStore.Location = new System.Drawing.Point(286, 295);
+            this.buttonAddStore.Name = "buttonAddStore";
+            this.buttonAddStore.Size = new System.Drawing.Size(200, 50);
+            this.buttonAddStore.TabIndex = 3;
+            this.buttonAddStore.Text = "Add Store";
+            this.buttonAddStore.UseVisualStyleBackColor = true;
+            this.buttonAddStore.Click += new System.EventHandler(this.button1_Click);
+            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonAddStore);
             this.Controls.Add(this.buttonAddCar);
             this.Controls.Add(this.buttonAddUser);
             this.Controls.Add(this.buttonPurchaseCar);
@@ -90,5 +104,6 @@ namespace CarDealer.Forms
         private System.Windows.Forms.Button buttonPurchaseCar;
         private System.Windows.Forms.Button buttonAddUser;
         private System.Windows.Forms.Button buttonAddCar;
+        private System.Windows.Forms.Button buttonAddStore;
     }
 }

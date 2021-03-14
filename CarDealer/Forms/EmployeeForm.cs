@@ -78,5 +78,13 @@ namespace CarDealer.Forms
             }
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form form = new AddStoreForm();
+            form.Show();
+
+            this.Hide();
+        }
     }
 }

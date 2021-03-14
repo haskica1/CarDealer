@@ -20,9 +20,15 @@ namespace CarDealer.Forms
         List<Storage> allStorages;
         List<Employee> employees = new List<Employee>();
         List<Storage> storages = new List<Storage>();
+        //todo - ne radi dodavanje skladista odnosno forma ne radi kako treba
         public AddStoreForm()
         {
             InitializeComponent();
+            WireUp();
+        }
+
+        public void WireUp()
+        {
             allEmployees = sql.getAllEmployees();
 
 
@@ -40,9 +46,18 @@ namespace CarDealer.Forms
 
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
-
+            if (!ValidateEmployee((Employee)comboBoxEmployee.SelectedItem)) return;
             listBoxEmployees.Items.Add(comboBoxEmployee.SelectedItem);
             employees.Add((Employee)comboBoxEmployee.SelectedItem);
+        }
+
+        private bool ValidateEmployee(Employee employee)
+        {
+            foreach(Employee e in employees)
+            {
+                if (e.Id == employee.Id) return false;
+            }
+            return true;
         }
 
         private void buttonAddStorage_Click(object sender, EventArgs e)
@@ -65,7 +80,9 @@ namespace CarDealer.Forms
 
         private void buttonAddStore_Click(object sender, EventArgs e)
         {
-            Form form2 = new CarForm();
+            sql.AddStore(textBoxName.Text, textBoxAddress.Text, employees, storages);
+
+            Form form2 = new EmployeeForm();
             form2.Show();
             this.Hide();
         }
@@ -90,6 +107,22 @@ namespace CarDealer.Forms
                 e.Cancel = true;
             }
 
+        }
+
+        private void linkLabelCreateEmployee_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form form = new AddUserForm(this);
+            form.Show();
+
+            this.Hide();
+        }
+
+        private void linkLabelCreateStorage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form form = new AddStorageForm(this);
+            form.Show();
+
+            this.Hide();
         }
     }
 }

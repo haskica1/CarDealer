@@ -91,6 +91,59 @@ namespace CarDealer.DataAccess
             return searchUser(firstName, lastName, address, email, telephoneNumber);
         }
 
+        internal void AddStore(string name, string address, List<Employee> employees, List<Storage> storages)
+        {
+            Store store = new Store(0, name, address);
+
+            var p = new DynamicParameters();
+            p.Add("@name", name);
+            p.Add("@address", address);
+            p.Add("@temp", 0, DbType.Int32, direction: ParameterDirection.Output);
+
+            connection.Execute("dbo.AddStore", p, commandType: CommandType.StoredProcedure);
+
+            store.Id = p.Get<int>("@temp");
+
+            AddEmpoyeesInStore(store, employees);
+            AddStoragesInStore(store, storages);
+        }
+
+        private void AddStoragesInStore(Store store, List<Storage> storages)
+        {
+            foreach (Storage s in storages)
+            {
+                var p = new DynamicParameters();
+                p.Add("@storeId", store.Id);
+                p.Add("@storeId", s.Id);
+                p.Add("@temp", 0);
+
+                connection.Execute("dbo.AddStorageToStore", p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        private void AddEmpoyeesInStore(Store store, List<Employee> employees)
+        {
+            foreach(Employee e in employees)
+            {
+                var p = new DynamicParameters();
+                p.Add("@storeId", store.Id);
+                p.Add("@employeeId", e.Id);
+                p.Add("@temp", 0);
+
+                connection.Execute("dbo.AddEmployeeToStore", p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        internal void AddCarToStorage(Car car, Storage storage)
+        {
+            var p = new DynamicParameters();
+            p.Add("@carID", car.Id);
+            p.Add("@storageID", storage.Id);
+            p.Add("@temp", 0);
+
+            connection.Execute("dbo.AddCarToStorage", p, commandType: CommandType.StoredProcedure);
+        }
+
         internal void deleteCar(Car car)
         {
             var p = new DynamicParameters();

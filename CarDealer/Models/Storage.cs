@@ -18,6 +18,7 @@ namespace CarDealer.Models
 
         public Storage(int id, string name, string address, List<Car> cars, Employee manager)
         {
+            Id = id;
             Name = name;
             Address = address;
             Cars = cars;
@@ -26,6 +27,7 @@ namespace CarDealer.Models
 
         public Storage(int id, string storageName, string storageAddress, int managerID)
         {
+            Id = id;
             Name = storageName;
             Address = storageAddress;
             Cars = null;

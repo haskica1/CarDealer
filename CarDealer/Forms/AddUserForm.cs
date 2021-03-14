@@ -18,11 +18,25 @@ namespace CarDealer.Forms
         List<string> types = new List<string> {"VIP","REGULAR","SALESMAN", "ADMINISTRATION", "DIRECTOR" };
         StartingForm StartingForm { get; set; }
         EmployeeForm EmployeeForm { get; set; }
+        AddStoreForm AddStoreForm { get; set; }
+
         public AddUserForm(StartingForm startingForm)
         {
             InitializeComponent();
 
             StartingForm = startingForm;
+            WireUp();
+        }
+
+        public AddUserForm(AddStoreForm addStoreForm)
+        {
+            InitializeComponent();
+
+            AddStoreForm = addStoreForm;
+            types.Remove("VIP");
+            types.Remove("REGULAR");
+            comboBoxType.Visible = true;
+            labelType.Visible = true;
             WireUp();
         }
 
@@ -83,15 +97,20 @@ namespace CarDealer.Forms
             textBoxPhoneNumber.Text = "";
             textBoxUsername.Text = "";
 
-            this.Close();
+            this.Hide();
 
             if (StartingForm != null)
             {
                 StartingForm.setUser(newUser);
                 StartingForm.Show();
             }
-            else
+            else if (EmployeeForm != null)
                 EmployeeForm.Show();
+            else
+            {
+                AddStoreForm.Show();
+                AddStoreForm.WireUp();
+            }
 
         }
 

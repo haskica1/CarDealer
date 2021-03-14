@@ -128,6 +128,7 @@ namespace CarDealer.Forms
             this.linkLabelCreateStorage.TabIndex = 16;
             this.linkLabelCreateStorage.TabStop = true;
             this.linkLabelCreateStorage.Text = "Create new storage";
+            this.linkLabelCreateStorage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelCreateStorage_LinkClicked);
             // 
             // groupBoxStorage
             // 
@@ -170,6 +171,7 @@ namespace CarDealer.Forms
             this.linkLabelCreateEmployee.TabIndex = 16;
             this.linkLabelCreateEmployee.TabStop = true;
             this.linkLabelCreateEmployee.Text = "Create new employee";
+            this.linkLabelCreateEmployee.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelCreateEmployee_LinkClicked);
             // 
             // buttonAddEmployee
             // 
