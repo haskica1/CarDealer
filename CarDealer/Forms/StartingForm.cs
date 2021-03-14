@@ -55,6 +55,7 @@ namespace CarDealer.Forms
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
+
             Form vehicleForm = new VehiclesFormForNotRegisterCusttomers(this);
 
             vehicleForm.Show();

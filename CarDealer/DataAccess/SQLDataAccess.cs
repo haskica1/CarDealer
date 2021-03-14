@@ -25,6 +25,25 @@ namespace CarDealer.DataAccess
       
         }
 
+        internal List<Car> getAllVehiclesOfStore(Store store)
+        {
+            List<Car> cars = new List<Car>();
+            List<Storage> storages = getAllStoragesInSpecificStore(store);
+
+            foreach (Storage storage in storages)
+            {
+                var p = new DynamicParameters();
+                p.Add("@storageId", storage.Id);
+                List<Car> rez = connection.Query<Car>("dbo.GetAllCarsOfStorage", p, commandType: CommandType.StoredProcedure).ToList();
+
+
+                foreach (Car car in rez) cars.Add(car);
+            }
+
+            return cars;
+
+        }
+
         internal List<Store> getAllStores()
         {
             var rez = connection.Query<Store>("dbo.GetAllStores").ToList();
@@ -47,6 +66,14 @@ namespace CarDealer.DataAccess
         {
             Store store = getStoreOfSpecificUser(user);
             if (store == null) return null;
+            var p = new DynamicParameters();
+            p.Add("@storeId", store.Id);
+            var rez = connection.Query<Storage>("dbo.GetStoragesOfSpecificStore", p, commandType: CommandType.StoredProcedure).ToList();
+            return rez;
+        }
+
+        internal List<Storage> getAllStoragesInSpecificStore(Store store)
+        { 
             var p = new DynamicParameters();
             p.Add("@storeId", store.Id);
             var rez = connection.Query<Storage>("dbo.GetStoragesOfSpecificStore", p, commandType: CommandType.StoredProcedure).ToList();

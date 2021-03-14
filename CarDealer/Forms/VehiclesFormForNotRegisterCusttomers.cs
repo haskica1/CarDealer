@@ -33,7 +33,7 @@ namespace CarDealer.Forms
 
         private void WireUp()
         {
-            cars = sql.getAllVehicles();
+            cars = sql.getAllVehiclesOfStore(Store);
             brands = sql.getAllBrands();
             colors = sql.getAllColors();
 
