@@ -45,6 +45,7 @@ namespace CarDealer.Forms
             User = sql.getUserByUsernameAndPassword(textBoxUsername.Text, textBoxPassword.Text);
 
             int userType = sql.getUserType(User);
+            User.GetType = userType;
             
             if(userType == 0 || userType == 1)
             {

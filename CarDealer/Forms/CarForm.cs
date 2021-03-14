@@ -19,20 +19,38 @@ namespace CarDealer.Forms
         private List<Equipment> equipments = new List<Equipment>();
         private List<Equipment> allEquipments = new List<Equipment>();
         private List<Storage> storages = new List<Storage>();
-
+        User User { get; set; }
         public CarForm()
         {
             InitializeComponent();
 
-            allEquipments = sql.GetAllEquipments();
-            storages = sql.getAllStorages();
+            
+            WireUpLists();
+        }
+        public CarForm(EmployeeForm employeeForm)
+        {
+            InitializeComponent();
+
+            User = employeeForm.getUser();
             WireUpLists();
         }
 
         private void WireUpLists()
         {
+            allEquipments = sql.GetAllEquipments();
+            if(User.GetType == 2 || User.GetType == 3)
+            {
+                storages = sql.getAllStoragesInSpecificStore(User);
+            }else if(User.GetType == 4)
+            {
+                storages = sql.getAllStorages();
+            }
+            
             comboBoxEquipment.DataSource = allEquipments;
             comboBoxEquipment.DisplayMember = "Name";
+
+            comboBoxStorage.DataSource = storages;
+            comboBoxStorage.DisplayMember = "StorageName";
 
 
             listBoxEquipment.DisplayMember = "FullEquipmentName";

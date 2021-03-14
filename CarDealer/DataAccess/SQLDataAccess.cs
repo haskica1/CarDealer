@@ -43,6 +43,26 @@ namespace CarDealer.DataAccess
             return rez;
         }
 
+        internal List<Storage> getAllStoragesInSpecificStore(User user)
+        {
+            Store store = getStoreOfSpecificUser(user);
+            if (store == null) return null;
+            var p = new DynamicParameters();
+            p.Add("@storeId", store.Id);
+            var rez = connection.Query<Storage>("dbo.GetStoragesOfSpecificStore", p, commandType: CommandType.StoredProcedure).ToList();
+            return rez;
+        }
+
+        private  Store getStoreOfSpecificUser(User user)
+        {
+            var p = new DynamicParameters();
+            p.Add("@userId", user.Id);
+
+            var rez = connection.Query<Store>("dbo.GetStoreOfSpecificUser", p, commandType: CommandType.StoredProcedure).ToList();
+            if (rez.Count != 0) return rez.First();
+            return null;
+        }
+
         internal List<Equipment> getEquipmentsOfCar(Car car)
         {
             var p = new DynamicParameters();

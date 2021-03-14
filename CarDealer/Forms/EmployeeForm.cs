@@ -56,7 +56,7 @@ namespace CarDealer.Forms
 
         private void buttonAddCar_Click(object sender, EventArgs e)
         {
-            Form form = new CarForm();
+            Form form = new CarForm(this);
             form.Show();
 
             this.Hide();
