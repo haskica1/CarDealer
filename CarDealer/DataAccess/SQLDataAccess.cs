@@ -172,7 +172,7 @@ namespace CarDealer.DataAccess
             {
                 var p = new DynamicParameters();
                 p.Add("@storeId", store.Id);
-                p.Add("@storeId", s.Id);
+                p.Add("@storageId", s.Id);
                 p.Add("@temp", 0);
 
                 connection.Execute("dbo.AddStorageToStore", p, commandType: CommandType.StoredProcedure);

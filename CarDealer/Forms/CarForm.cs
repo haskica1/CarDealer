@@ -19,6 +19,7 @@ namespace CarDealer.Forms
         private List<Equipment> equipments = new List<Equipment>();
         private List<Equipment> allEquipments = new List<Equipment>();
         private List<Storage> storages = new List<Storage>();
+        EmployeeForm EmployeeForm { get; set; }
         User User { get; set; }
         public CarForm()
         {
@@ -30,7 +31,7 @@ namespace CarDealer.Forms
         public CarForm(EmployeeForm employeeForm)
         {
             InitializeComponent();
-
+            EmployeeForm = employeeForm;
             User = employeeForm.getUser();
             WireUpLists();
         }
@@ -105,7 +106,12 @@ namespace CarDealer.Forms
 
             listBoxEquipment.Items.Clear();
 
-            return;
+            this.Hide();
+
+            if (EmployeeForm != null)
+            {
+                EmployeeForm.Show();
+            }
         }
 
         private void buttonAddEquipment_Click(object sender, EventArgs e)
@@ -135,8 +141,8 @@ namespace CarDealer.Forms
             textBoxNameOfEquipment.Text = "";
             richTextBoxInfoOfEquipment.Text = "";
 
-
-            WireUpLists();
+            
+            //WireUpLists();
         }
 
         private bool ValidateEquipment(Equipment equipment)
@@ -182,6 +188,11 @@ namespace CarDealer.Forms
             {
                 e.Cancel = true;
             }
+
+        }
+
+        private void comboBoxStorage_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

@@ -18,6 +18,7 @@ namespace CarDealer.Forms
         User User { get; set; }
         Store Store { get; set; }
         SQLDataAccess sql = new SQLDataAccess();
+        VehiclesFormForNotRegisterCusttomers VehiclesFormForNotRegisterCusttomers { get; set; }
         public CarSpecificationForm(VehiclesFormForNotRegisterCusttomers vehiclesFormForNotRegisterCusttomers)
         {
             InitializeComponent();
@@ -35,6 +36,7 @@ namespace CarDealer.Forms
             listBoxEquipment.DataSource = sql.getEquipmentsOfCar(Car);
             listBoxEquipment.DisplayMember = "FullEquipmentName";
 
+            VehiclesFormForNotRegisterCusttomers = vehiclesFormForNotRegisterCusttomers;
         }
 
         internal Store getStore()
@@ -82,5 +84,6 @@ namespace CarDealer.Forms
             }
 
         }
+
     }
 }

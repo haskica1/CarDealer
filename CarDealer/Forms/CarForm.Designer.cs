@@ -318,6 +318,7 @@ namespace CarDealer.Forms
             this.comboBoxStorage.Name = "comboBoxStorage";
             this.comboBoxStorage.Size = new System.Drawing.Size(201, 21);
             this.comboBoxStorage.TabIndex = 20;
+            this.comboBoxStorage.SelectedIndexChanged += new System.EventHandler(this.comboBoxStorage_SelectedIndexChanged);
             // 
             // CarForm
             // 

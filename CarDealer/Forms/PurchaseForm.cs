@@ -20,9 +20,18 @@ namespace CarDealer.Forms
         Store Store { get; set; }
         Order Order { get; set; }
         Bill Bill { get; set; }
+        CarSpecificationForm CarSpecificationForm { get; set; }
+        private bool logIn = true;
+
+        internal User getUser()
+        {
+            return User;
+        }
+
         public PurchaseForm(CarSpecificationForm carSpecificationForm)
         {
             InitializeComponent();
+            CarSpecificationForm = carSpecificationForm;
 
             Car = carSpecificationForm.getCar();
             Store = carSpecificationForm.getStore();
@@ -84,6 +93,18 @@ namespace CarDealer.Forms
             textBoxPhoneNumber.Text = "";
 
             sql.deleteCar(Car);
+            this.Hide();
+
+            if (logIn)
+            {
+                Form form = new EmployeeForm(this);
+                form.Show();
+            }
+            else {
+                Form form = new StartingForm();
+                form.Show();
+            }
+            
         }
 
         private User CheckUser(User user)
@@ -91,6 +112,7 @@ namespace CarDealer.Forms
             //ako si usao odmah bez da si se prijavio
             if(user == null)
             {
+                logIn = false;
                 //trazis u bazi jel ima upisani neki korisnik sa tim podacima
                 user = sql.searchUser(textBoxFirstName.Text, textBoxLastName.Text, textBoxAddress.Text, textBoxEmail.Text, textBoxPhoneNumber.Text);
                 if (user == null)

@@ -22,12 +22,15 @@ namespace CarDealer.Forms
         Car SelectedCar { get; set; }
         User User { get;  set; }
         Store Store { get; set; }
+        StartingForm StartingForm { get; set; }
         public VehiclesFormForNotRegisterCusttomers(StartingForm startingForm)
         {
             InitializeComponent();
 
             User = startingForm.getUser();
             Store = startingForm.getStore();
+
+            StartingForm = startingForm;
             WireUp();  
         }
 
@@ -124,5 +127,6 @@ namespace CarDealer.Forms
             }
 
         }
+
     }
 }

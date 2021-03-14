@@ -19,6 +19,11 @@ namespace CarDealer.Forms
             InitializeComponent();
             User = logInForm.getUser();
         }
+        public EmployeeForm(PurchaseForm purchaseForm)
+        {
+            InitializeComponent();
+            User = purchaseForm.getUser();
+        }
         public EmployeeForm()
         {
             InitializeComponent();
